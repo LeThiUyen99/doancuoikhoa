@@ -1,0 +1,37 @@
+
+@media only screen and(max-width:1024px){
+
+}
+
+@media only screen and(min-width: 991px) {
+  .pr-lg-5 {
+    padding-right: 5px;
+  }
+  .pr-lg-10 {
+    padding-right: 10px;
+  }
+  .pr-lg-20 {
+    padding-right: 10px;
+  }
+  .mr-lg-5 {
+    margin-right: 5px;
+  }
+}
+
+@media only screen and(max-width:768px){
+  .el-radio {
+    margin-right: 10px;
+  }
+}
+
+@media only screen and(max-width:480px){
+  .text-right
+  {
+    margin-top: 10px !important;
+  }
+  .hide-mobile
+  {
+    display: none !important;
+  }
+}
+
