@@ -5,6 +5,7 @@ Vue.use(Router)
 
 /* Layout */
 import Layout from '@/layout'
+import LayoutCustomer from '@/customer_layout'
 
 import shopRouter from './modules/shop'
 import categoryRouter from './modules/category'
@@ -97,6 +98,17 @@ export const constantRoutes = [
     path: '/401',
     component: () => import('@/views/error-page/401'),
     hidden: true
+  },
+  {
+    path: '/home',
+    component: LayoutCustomer,
+    hidden: true,
+    children: [
+      {
+        path: '/home',
+        component: () => import('@/views/customer-view/home/index')
+      }
+    ]
   },
   {
     path: '/',
