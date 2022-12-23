@@ -561,5 +561,6 @@
   "Search_by_VGA_code": "Search by VGA code",
   "Search_by_id": "Search by id",
   "Search_by_bill_code": "Search by waybill code",
-  "Search_by_phone_number": "Search by phone number"
+  "Search_by_phone_number": "Search by phone number",
+  "tour_manage_title": "Tour manager"
 }

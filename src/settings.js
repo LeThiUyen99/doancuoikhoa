@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'CMS SHOP',
+  title: 'WEB TRAVEL',
 
   /**
    * @type {boolean} true | false

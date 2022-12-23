@@ -570,5 +570,6 @@
   "Search_by_VGA_code": "Tìm theo mã VGA",
   "Search_by_id": "Tìm theo Id",
   "Search_by_bill_code": "Tìm theo mã vận đơn",
-  "Search_by_phone_number": "Tìm theo số điện thoại"
+  "Search_by_phone_number": "Tìm theo số điện thoại",
+  "tour_manage_title": "Quản lý tour"
 }

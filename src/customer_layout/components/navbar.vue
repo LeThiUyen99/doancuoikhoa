@@ -1,19 +1,19 @@
 <template>
   <nav id="ftco-navbar" class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Pacific<span>Travel Agency</span></a>
+      <router-link class="navbar-brand" to="/home">Pacific<span>Travel Agency</span></router-link>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu" /> Menu
       </button>
 
       <div id="ftco-nav" class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="destination.html" class="nav-link">Destination</a></li>
-          <li class="nav-item"><a href="hotel.html" class="nav-link">Hotel</a></li>
-          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="nav-item active"><router-link to="/home" class="nav-link">Home</router-link></li>
+          <li class="nav-item"><router-link to="/about" class="nav-link">About</router-link></li>
+          <li class="nav-item"><router-link to="/destination" class="nav-link">Destination</router-link></li>
+          <li class="nav-item"><router-link to="/hotel" class="nav-link">Hotel</router-link></li>
+          <li class="nav-item"><router-link to="/blog" class="nav-link">Blog</router-link></li>
+          <li class="nav-item"><router-link to="/contact" class="nav-link">Contact</router-link></li>
         </ul>
       </div>
     </div>

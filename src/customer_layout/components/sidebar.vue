@@ -9,9 +9,9 @@
             <h1 class="mb-4">Discover Your Favorite Place with Us</h1>
             <p class="caps">Travel to the any corner of the world, without going around in circles</p>
           </div>
-          <a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
-            <span class="fa fa-play" />
-          </a>
+<!--          <a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">-->
+<!--            <span class="fa fa-play" />-->
+<!--          </a>-->
         </div>
       </div>
     </div>
@@ -634,6 +634,12 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto; }
+.tab-content {
+  margin-bottom: 0;
+  margin-top: 15px;
+  min-height: auto;
+  padding-bottom: 10px;
+}
 @media (min-width: 576px) {
   .container {
     max-width: 540px; } }
@@ -3791,7 +3797,9 @@ input[type="button"].btn-block {
   display: none; }
 
 .tab-content > .active {
-  display: block; }
+  display: block;
+  box-shadow: rgb(99 99 99 / 20%) 0px 2px 5px 0px;
+}
 
 .navbar {
   position: relative;
@@ -8764,15 +8772,15 @@ h1, h2, h3, h4, h5,
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed; }
-.hero-wrap .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  content: '';
-  opacity: .3;
-  background: #000000; }
+/*.hero-wrap .overlay {*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  left: 0;*/
+/*  right: 0;*/
+/*  bottom: 0;*/
+/*  content: '';*/
+/*  opacity: .3;*/
+/*  background: #000000; }*/
 .hero-wrap.hero-wrap-2 .overlay {
   width: 100%; }
 

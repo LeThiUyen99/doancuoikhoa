@@ -24,7 +24,7 @@ import { mapGetters } from 'vuex'
 import Logo from './Logo'
 import SidebarItem from './SidebarItem'
 import variables from '@/styles/variables.scss'
-import store from '@/store'
+// import store from '@/store'
 
 export default {
   components: { SidebarItem, Logo },
@@ -38,17 +38,18 @@ export default {
   },
   methods: {
     async createMenus() {
-      const { roles } = await store.dispatch('user/getInfo')
+      // const { roles } = await store.dispatch('user/getInfo')
       // console.log('....................list roles:', roles)
       // console.log('.......................permission : ', JSON.stringify(this.permission_routes))
-      for (const role of roles) {
-        const path = `/${role}`
-        const menu = this.permission_routes.find(router => router.path === path)
-        // console.log('..........................tim menu', menu)
-        if (menu) {
-          this.menus.push(menu)
-        }
-      }
+      // for (const role of roles) {
+      //   const path = `/${role}`
+      //   const menu = this.permission_routes.find(router => router.path === path)
+      //   // console.log('..........................tim menu', menu)
+      //   if (menu) {
+      //     this.menus.push(menu)
+      //   }
+      // }
+      this.menus = this.permission_routes
     }
   },
   computed: {

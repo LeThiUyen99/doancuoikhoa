@@ -7,30 +7,31 @@ Vue.use(Router)
 import Layout from '@/layout'
 import LayoutCustomer from '@/customer_layout'
 
-import shopRouter from './modules/shop'
-import categoryRouter from './modules/category'
-import trademarkRouter from './modules/trademark'
-import accountRouter from './modules/account'
-import revenueRouter from './modules/revenue'
-import tagRouter from './modules/tag'
-import promotionsRouter from './modules/promotions'
-import deliveryRouter from './modules/delivery'
-import productRouter from './modules/product'
-import uploaderrorRouter from './modules/uploaderror'
-import saleRouter from './modules/sale'
-import categoriesShowRouter from '@/router/modules/Categories_show'
-// import discountRouter from '@/router/modules/discount'
-import documentRouter from './modules/document'
-import pointRouter from '@/router/modules/point'
-import transportRouter from '@/router/modules/transport'
-import workRouter from '@/router/modules/work'
-import jobDailyRouter from '@/router/modules/job_daily'
-import deliveryAdminRouter from './modules/admin_delivery'
-import PostNotiRouter from '@/router/modules/post-noti'
-import voucherRouter from '@/router/modules/voucher'
-import returnPolicyRouter from './modules/return-policy'
-import customerRouter from './modules/customer'
-import reviewRouter from './modules/review'
+// import shopRouter from './modules/shop'
+// import categoryRouter from './modules/category'
+// import trademarkRouter from './modules/trademark'
+// import accountRouter from './modules/account'
+// import revenueRouter from './modules/revenue'
+// import tagRouter from './modules/tag'
+// import promotionsRouter from './modules/promotions'
+// import deliveryRouter from './modules/delivery'
+// import productRouter from './modules/product'
+// import uploaderrorRouter from './modules/uploaderror'
+// import saleRouter from './modules/sale'
+// import categoriesShowRouter from '@/router/modules/Categories_show'
+// // import discountRouter from '@/router/modules/discount'
+// import documentRouter from './modules/document'
+// import pointRouter from '@/router/modules/point'
+// import transportRouter from '@/router/modules/transport'
+// import workRouter from '@/router/modules/work'
+// import jobDailyRouter from '@/router/modules/job_daily'
+// import deliveryAdminRouter from './modules/admin_delivery'
+// import PostNotiRouter from '@/router/modules/post-noti'
+// import voucherRouter from '@/router/modules/voucher'
+// import returnPolicyRouter from './modules/return-policy'
+// import customerRouter from './modules/customer'
+// import reviewRouter from './modules/review'
+import tourRouter from '@/router/modules/tour'
 /**
  * Note: sub-menu only appear when route children.length >= 1
  * Detail see: https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
@@ -111,6 +112,28 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/about',
+    component: LayoutCustomer,
+    hidden: true,
+    children: [
+      {
+        path: '/about',
+        component: () => import('@/views/customer-view/about/index')
+      }
+    ]
+  },
+  {
+    path: '/contact',
+    component: LayoutCustomer,
+    hidden: true,
+    children: [
+      {
+        path: '/contact',
+        component: () => import('@/views/customer-view/contact/index')
+      }
+    ]
+  },
+  {
     path: '/',
     component: Layout,
     redirect: '/dashboard',
@@ -144,30 +167,31 @@ export const constantRoutes = [
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [
-  shopRouter,
-  categoryRouter,
-  productRouter,
-  trademarkRouter,
-  accountRouter,
-  revenueRouter,
-  tagRouter,
-  promotionsRouter,
-  deliveryRouter,
-  uploaderrorRouter,
-  saleRouter,
-  // discountRouter,
-  documentRouter,
-  pointRouter,
-  categoriesShowRouter,
-  transportRouter,
-  workRouter,
-  jobDailyRouter,
-  deliveryAdminRouter,
-  PostNotiRouter,
-  voucherRouter,
-  returnPolicyRouter,
-  customerRouter,
-  reviewRouter,
+  tourRouter,
+  // shopRouter,
+  // categoryRouter,
+  // productRouter,
+  // trademarkRouter,
+  // accountRouter,
+  // revenueRouter,
+  // tagRouter,
+  // promotionsRouter,
+  // deliveryRouter,
+  // uploaderrorRouter,
+  // saleRouter,
+  // // discountRouter,
+  // documentRouter,
+  // pointRouter,
+  // categoriesShowRouter,
+  // transportRouter,
+  // workRouter,
+  // jobDailyRouter,
+  // deliveryAdminRouter,
+  // PostNotiRouter,
+  // voucherRouter,
+  // returnPolicyRouter,
+  // customerRouter,
+  // reviewRouter,
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
@@ -175,7 +199,7 @@ export const asyncRoutes = [
 const createRouter = () => new Router({
   mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
-  routes: constantRoutes
+  routes: [...constantRoutes, ...asyncRoutes]
 })
 
 const router = createRouter()
