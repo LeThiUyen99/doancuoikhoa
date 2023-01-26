@@ -1,14 +1,15 @@
 <template>
   <nav id="ftco-navbar" class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light">
     <div class="container">
-      <router-link class="navbar-brand" to="/home">Pacific<span>Travel Agency</span></router-link>
+      <router-link class="navbar-brand" to="/">Pacific<span>Travel Agency</span></router-link>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu" /> Menu
       </button>
 
       <div id="ftco-nav" class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><router-link to="/home" class="nav-link">Home</router-link></li>
+          <li class="nav-item active"><router-link to="/" class="nav-link">Home</router-link></li>
+          <li class="nav-item"><router-link to="/list-tour" class="nav-link">Tour</router-link></li>
           <li class="nav-item"><router-link to="/about" class="nav-link">About</router-link></li>
           <li class="nav-item"><router-link to="/destination" class="nav-link">Destination</router-link></li>
           <li class="nav-item"><router-link to="/hotel" class="nav-link">Hotel</router-link></li>

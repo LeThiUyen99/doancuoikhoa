@@ -31,7 +31,7 @@ import LayoutCustomer from '@/customer_layout'
 // import returnPolicyRouter from './modules/return-policy'
 // import customerRouter from './modules/customer'
 // import reviewRouter from './modules/review'
-import tourRouter from '@/router/modules/tour'
+// import tourRouter from '@/router/modules/tour'
 /**
  * Note: sub-menu only appear when route children.length >= 1
  * Detail see: https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
@@ -101,12 +101,12 @@ export const constantRoutes = [
     hidden: true
   },
   {
-    path: '/home',
+    path: '/',
     component: LayoutCustomer,
     hidden: true,
     children: [
       {
-        path: '/home',
+        path: '/',
         component: () => import('@/views/customer-view/home/index')
       }
     ]
@@ -134,18 +134,40 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/',
-    component: Layout,
-    redirect: '/dashboard',
+    path: '/list-tour',
+    component: LayoutCustomer,
+    hidden: true,
     children: [
       {
-        path: 'dashboard',
-        component: () => import('@/views/dashboard/index'),
-        name: 'Dashboard',
-        meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
+        path: '/list-tour',
+        component: () => import('@/views/list_tour/list')
       }
     ]
   },
+  {
+    path: '/detail',
+    component: LayoutCustomer,
+    hidden: true,
+    children: [
+      {
+        path: '/detail',
+        component: () => import('@/views/detail/list')
+      }
+    ]
+  },
+  // {
+  //   path: '/dashboard',
+  //   component: Layout,
+  //   redirect: '/dashboard',
+  //   children: [
+  //     {
+  //       path: 'dashboard',
+  //       component: () => import('@/views/dashboard/index'),
+  //       name: 'Dashboard',
+  //       meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
+  //     }
+  //   ]
+  // },
   {
     path: '/profile',
     component: Layout,
@@ -167,7 +189,7 @@ export const constantRoutes = [
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [
-  tourRouter,
+  // tourRouter,
   // shopRouter,
   // categoryRouter,
   // productRouter,
