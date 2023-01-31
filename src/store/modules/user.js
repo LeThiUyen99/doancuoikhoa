@@ -1,7 +1,8 @@
-import { login, getMenu } from '@/api/user'
-import { getToken, setToken, removeToken, setAcountInfo } from '@/utils/auth'
+import { loginUser, getMenu } from '@/api/user'
+import { getToken, setToken, removeToken, setAcountInfo, setUID } from '@/utils/auth'
 import router, { resetRouter } from '@/router'
 import md5 from 'js-md5'
+import { Message } from 'element-ui'
 
 const state = {
   token: getToken(),
@@ -38,11 +39,20 @@ const actions = {
   login({ commit }, userInfo) {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
-      login({ username: username.trim(), password: md5(password), grant_type: 'password' }).then(response => {
-        const { data } = response
-        commit('SET_TOKEN', data.token)
-        setToken(data.token)
-        resolve()
+      loginUser({ username: username.trim(), password: md5(password), grant_type: 'password' }).then(response => {
+        // console.log(response, '---------------')
+        const { data, error_code, error_msg } = response
+        if (error_code === 0) {
+          commit('SET_TOKEN', data.token)
+          setToken(data.token)
+          setAcountInfo(data.account)
+          setUID(data.account.id)
+          resolve()
+        } else {
+          console.log(error_msg)
+          Message.error(error_msg)
+          reject(error_msg)
+        }
       }).catch(error => {
         console.log(error)
         reject(error)

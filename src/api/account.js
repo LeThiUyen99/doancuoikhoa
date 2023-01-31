@@ -3,7 +3,7 @@ import request from '@/utils/request'
 
 class AccountResource extends Resource {
   constructor() {
-    super('api/public/account')
+    super('user')
   }
   AccountList(query) {
     return request({
@@ -14,7 +14,7 @@ class AccountResource extends Resource {
   }
   storeAccount(resource) {
     return request({
-      url: `/${this.uri}/create?${this.getVerify()}`,
+      url: `/${this.uri}/register?${this.getVerify()}`,
       method: 'post',
       data: resource
     })

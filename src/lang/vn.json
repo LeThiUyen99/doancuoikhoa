@@ -571,5 +571,10 @@
   "Search_by_id": "Tìm theo Id",
   "Search_by_bill_code": "Tìm theo mã vận đơn",
   "Search_by_phone_number": "Tìm theo số điện thoại",
-  "tour_manage_title": "Quản lý tour"
+  "tour_manage_title": "Quản lý tour",
+  "not_info": "Không có dữ liệu",
+  "schedule": "Lịch trình",
+  "departure_details": "Chi tiết khởi hành",
+  "main_attractions": "Điểm tham quan chính",
+  "comment": "Bình luận"
 }

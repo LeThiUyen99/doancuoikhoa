@@ -2,6 +2,7 @@ import Cookies from 'js-cookie'
 
 const TokenKey = 'Admin-Token'
 const accountKey = 'Account-info'
+const uidKey = 'Account-UID'
 
 export function getToken() {
   return Cookies.get(TokenKey)
@@ -13,6 +14,17 @@ export function setToken(token) {
 
 export function removeToken() {
   return Cookies.remove(TokenKey)
+}
+
+export function getUID() {
+  return localStorage.getItem(uidKey) ? localStorage.getItem(uidKey) : ''
+}
+
+export function setUID(uid) {
+  return localStorage.setItem(uidKey, uid)
+}
+export function removeUID() {
+  return localStorage.removeItem(uidKey)
 }
 
 export function setAcountInfo(account = {}) {

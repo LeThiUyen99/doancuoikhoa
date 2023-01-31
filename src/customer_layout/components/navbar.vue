@@ -9,23 +9,92 @@
       <div id="ftco-nav" class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active"><router-link to="/" class="nav-link">Home</router-link></li>
-          <li class="nav-item"><router-link to="/list-tour" class="nav-link">Tour</router-link></li>
+          <li class="nav-item">
+            <el-dropdown>
+              <span class="el-dropdown-link">Tour nước ngoài</span>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item v-for="cate in categories" :key="cate.id" :value="cate.id">
+                  <router-link :to="`/list-tour?category_id=${cate.id}`" class="nav-link">{{ cate.name }}</router-link>
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
+          </li>
+          <li class="nav-item"><router-link :to="`/list-tour?category_id=${cate_id}`" class="nav-link">Tour trong nước</router-link></li>
+          <li class="nav-item"><router-link to="/book-tour" class="nav-link">Book tour</router-link></li>
           <li class="nav-item"><router-link to="/about" class="nav-link">About</router-link></li>
-          <li class="nav-item"><router-link to="/destination" class="nav-link">Destination</router-link></li>
-          <li class="nav-item"><router-link to="/hotel" class="nav-link">Hotel</router-link></li>
           <li class="nav-item"><router-link to="/blog" class="nav-link">Blog</router-link></li>
           <li class="nav-item"><router-link to="/contact" class="nav-link">Contact</router-link></li>
+          <li v-if="showUser" class="nav-item"><router-link to="/login" class="nav-link">login</router-link></li>
+          <li v-if="!showUser" class="nav-item"><div class="nav-link" @click="onLogout">logout</div></li>
         </ul>
       </div>
     </div>
   </nav>
 </template>
 <script>
+import { getUID, removeToken, removeUID } from '@/utils/auth'
+import ListTourResource from '@/api/list-tour'
+const listTourResource = new ListTourResource()
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  data() {
+    return {
+      showUser: true,
+      categories: [],
+      cate_id: 0
+    }
+  },
+  created() {
+    this.showUserIcon()
+    this.requestCategoryList()
+    this.requestCategoryListVN()
+  },
+  methods: {
+    onLogout() {
+      removeToken()
+      removeUID()
+      this.showUser = true
+      location.reload()
+    },
+    showUserIcon() {
+      if (getUID()) {
+        this.showUser = false
+      } else {
+        this.showUser = true
+      }
+    },
+    requestCategoryList() {
+      const cate_id = 0
+      listTourResource.categoryList(cate_id).then(res => {
+        const { error_code, data } = res
+        if (error_code === 0) {
+          this.categories = data.cate
+          console.log(this.categories)
+        }
+      })
+    },
+    requestCategoryListVN() {
+      const cate_id = 1
+      listTourResource.categoryList(cate_id).then(res => {
+        const { error_code, data } = res
+        if (error_code === 0) {
+          this.cate_id = data.cate[0].id
+        }
+      })
+    }
+  }
 }
 </script>
 <style scoped>
+.el-dropdown{
+  font-size: 15px;
+  padding-top: 1.5rem;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #fff;
+  font-weight: 500;
+  opacity: 1 !important;
+}
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
