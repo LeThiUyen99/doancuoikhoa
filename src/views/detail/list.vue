@@ -95,6 +95,7 @@
                   :per-page="5"
                   :pagination-enabled="false"
                   :mouse-drag="false"
+                  :autoplay="true"
                 >
                   <slide v-for="same in tour_same" :key="same.id">
                     <div class="slide-product">
@@ -105,7 +106,7 @@
                               class="el-image-related"
                               :src="url + same.images"
                               :product="same"
-                              fit="contain"
+                              fit="cover"
                             />
                           </div>
                         </div>
@@ -131,7 +132,7 @@
 </template>
 
 <script>
-import {formatNumber} from '@/utils/convert'
+import { formatNumber } from '@/utils/convert'
 import { Carousel, Slide } from 'vue-carousel'
 import default_user from '@/assets/images/default_user.png'
 import BASE_URL from '@/constant/domain'
@@ -283,5 +284,11 @@ export default {
   background-color: #E5E5E5;
   padding: 50px;
   border-radius: 20px;
+}
+.el-image-related {
+  min-height: 300px;
+}
+.thumb-wrapper .el-image img{
+  min-height: 300px;
 }
 </style>

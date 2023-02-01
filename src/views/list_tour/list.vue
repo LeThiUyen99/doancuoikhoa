@@ -15,7 +15,7 @@
                   <div class="tour-item">
                     <div class="thumb">
                       <router-link class="home-link" :to="`/detail?id=${tour.id}`">
-                        <el-image :src="url + tour.images" :fit="contain" />
+                        <el-image :src="url + tour.images" fit="cover" />
                       </router-link>
                     </div>
                     <div class="title-tour">
@@ -62,7 +62,7 @@ export default {
       listQuery: Object.assign({}, defaultQuery),
       title: i18n.t('not_info'),
       loadingTable: false,
-      contain: 'contain'
+      cover: 'contain'
     }
   },
   created() {
@@ -89,7 +89,7 @@ export default {
 <style>
 .tour-list{
   width: 25%;
-  height: 420px;
+  height: 470px;
   margin-bottom: 10px;
 }
 .card-tour{
@@ -103,19 +103,19 @@ export default {
 }
 .tour-item{
   text-align: left;
-  height: 400px;
+  height: 450px;
 }
 .tour-item .thumb{
   position: relative;
   text-align: center;
 }
 .tour-item .thumb .el-image{
-  height: 330px;
+  height: 360px;
   width: 100%;
 }
 .tour-item .thumb .el-image img{
-  min-height: 330px;
-  height: max-content;
+  min-height: 360px;
+  min-width: 360px;
 }
 a, h3{
   margin: 0;
