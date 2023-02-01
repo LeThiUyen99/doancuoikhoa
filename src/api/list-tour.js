@@ -38,6 +38,12 @@ class ListTourResource extends Resource {
       params: query
     })
   }
+  tourSame(id) {
+    return request({
+      url: `/${this.uri}/tour_same/${id}?${this.getVerify()}`,
+      method: 'get'
+    })
+  }
 }
 
 export { ListTourResource as default }

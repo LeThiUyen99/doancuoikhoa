@@ -51,17 +51,17 @@
                   </el-col>
                 </el-row>
               </div>
-              <el-row class="comment-tour">
+              <el-row v-if="showComment" class="comment-tour">
                 <el-col :span="13" class="list-comment">
                   <div class="grid-content bg-purple">
                     <div v-for="comment in commets" :key="comment.id" class="comment-col">
                       <div class="thumb">
-                        <el-image :src="default_user" style="width: 30px; height: 30px;"/>
+                        <el-image :src="default_user" style="width: 30px; height: 30px;" />
                       </div>
                       <div class="item-comment">
-                        <el-rate disabled v-model="comment.rating"></el-rate>
-                        <p>{{comment.user? comment.user.name: ''}}</p>
-                        <p>{{comment.comment}}</p>
+                        <el-rate v-model="comment.rating" disabled />
+                        <p>{{ comment.user? comment.user.name: '' }}</p>
+                        <p>{{ comment.comment }}</p>
                       </div>
                     </div>
                   </div>
@@ -72,8 +72,8 @@
                     <el-form :model="commentForm">
                       <el-rate
                         v-model="commentForm.rating"
-                        :colors="colors">
-                      </el-rate>
+                        :colors="colors"
+                      />
                       <el-form-item :label="$t('content')">
                         <el-input v-model="commentForm.comment" type="textarea" :placeholder="$t('content')" />
                       </el-form-item>
@@ -90,6 +90,38 @@
                   </div>
                 </el-col>
               </el-row>
+              <el-row class="same-tour-list">
+                <carousel
+                  :per-page="5"
+                  :pagination-enabled="false"
+                  :mouse-drag="false"
+                >
+                  <slide v-for="same in tour_same" :key="same.id">
+                    <div class="slide-product">
+                      <div class="product-thumb">
+                        <div class="thumb-wrapper">
+                          <div>
+                            <el-image
+                              class="el-image-related"
+                              :src="url + same.images"
+                              :product="same"
+                              fit="contain"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <p class="title-product">{{ same.name }}</p>
+                      </div>
+                      <div>
+                        <p class="price" style="font-size:13px">
+                          <span>{{ $i18n.t('price_vnd').format(formatNumber(same.price)) }}</span>
+                        </p>
+                      </div>
+                    </div>
+                  </slide>
+                </carousel>
+              </el-row>
             </div>
           </div>
         </div>
@@ -99,27 +131,27 @@
 </template>
 
 <script>
+import {formatNumber} from '@/utils/convert'
+import { Carousel, Slide } from 'vue-carousel'
 import default_user from '@/assets/images/default_user.png'
 import BASE_URL from '@/constant/domain'
 import ListTourResource from '@/api/list-tour'
 import { getAcountInfo } from '@/utils/auth'
 const account = getAcountInfo()
 const listTourResource = new ListTourResource()
-const defaultQuery = {
-  user_id: account.id
-}
 
 export default {
   name: 'List',
+  components: { Carousel, Slide },
 
   data() {
     return {
       detail: [],
       url: BASE_URL,
       commentForm: {
-        name: account.name,
-        email: account.email,
-        user_id: account.id,
+        name: account ? account.name : '',
+        email: account ? account.email : '',
+        user_id: account ? account.id : 0,
         rating: 0
       },
       default_user: default_user,
@@ -127,19 +159,41 @@ export default {
       colors: ['#99A9BF', '#F7BA2A', '#FF9900'], // same as { 2: '#99A9BF', 4: { value: '#F7BA2A', excluded: true }, 5: '#FF9900' }
       loadingCommnet: false,
       commets: [],
-      listQuery: Object.assign({}, defaultQuery)
+      showComment: false,
+      tour_same: []
     }
   },
   created() {
     this.requestDetailList()
     this.requestCommentList()
+    this.requestShowComment()
   },
 
   methods: {
+    requestShowComment() {
+      if (account) {
+        this.showComment = true
+      } else {
+        this.showComment = false
+      }
+    },
+    requestTourSameList(tour_id) {
+      listTourResource.tourSame(tour_id).then(res => {
+        const { error_code, data } = res
+        if (error_code === 0) {
+          this.tour_same = data.list_same
+          console.log(this.tour_same)
+        }
+      })
+    },
     requestCommentList(tour_id) {
       this.loadingCommnet = true
-      this.listQuery.tour_id = tour_id
-      listTourResource.commentList(this.listQuery).then(res => {
+      const listQuery = {
+        tour_id: tour_id,
+        user_id: account ? account.id : 0
+      }
+      console.log(tour_id, '----')
+      listTourResource.commentList(listQuery).then(res => {
         this.loadingCommnet = false
         const { error_code, data } = res
         if (error_code === 0) {
@@ -167,12 +221,14 @@ export default {
       listTourResource.detail(id).then(res => {
         const { error_code, data } = res
         if (error_code === 0) {
-          this.detail = data.data
+          this.detail = { ...data.data }
           const tour_id = data.data.id
           this.requestCommentList(tour_id)
+          this.requestTourSameList(tour_id)
         }
       })
-    }
+    },
+    formatNumber
   }
 }
 </script>

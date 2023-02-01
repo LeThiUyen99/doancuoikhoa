@@ -1,5 +1,5 @@
 import { loginUser, getMenu } from '@/api/user'
-import { getToken, setToken, removeToken, setAcountInfo, setUID } from '@/utils/auth'
+import { getToken, setToken, removeToken, setAcountInfo, setUID, removeUID, removeAcountInfo } from '@/utils/auth'
 import router, { resetRouter } from '@/router'
 import md5 from 'js-md5'
 import { Message } from 'element-ui'
@@ -90,9 +90,12 @@ const actions = {
   },
   // user logout
   logout({ commit, state, dispatch }) {
+    console.log('123123213')
     commit('SET_TOKEN', '')
     commit('SET_ROLES', [])
     removeToken()
+    removeUID()
+    removeAcountInfo()
     resetRouter()
     dispatch('tagsView/delAllViews', null, { root: true })
   },

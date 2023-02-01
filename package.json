@@ -43,6 +43,7 @@
     "vue": "2.6.10",
     "vue-apexcharts": "^1.6.1",
     "vue-avatar-cropper": "^3.0.0",
+    "vue-carousel": "^0.18.0",
     "vue-chart.js": "^0.2.0",
     "vue-chartjs": "^3.5.1",
     "vue-count-to": "1.0.13",

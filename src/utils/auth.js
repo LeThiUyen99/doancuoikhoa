@@ -37,6 +37,10 @@ export function getAcountInfo(account = '{}') {
   return account ? parseJson(ac) : null
 }
 
+export function removeAcountInfo() {
+  return Cookies.remove(accountKey)
+}
+
 export function parseJson(json) {
   try {
     return JSON.parse(json)
