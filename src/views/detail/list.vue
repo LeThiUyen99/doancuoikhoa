@@ -234,7 +234,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style>
 .thumb-detail{
   border-radius: 20px;
 }
@@ -281,14 +281,40 @@ export default {
   padding: 30px 0px 30px 30px;
 }
 .form-comment .comment-des{
-  background-color: #E5E5E5;
+  border: 3px solid #c3a30b;
   padding: 50px;
   border-radius: 20px;
 }
 .el-image-related {
-  min-height: 300px;
+  height: 300px;
 }
-.thumb-wrapper .el-image img{
+.thumb-wrapper .el-image__error, .el-image__placeholder, .el-image__inner{
   min-height: 300px;
+  min-width: 323px;
+}
+.slide-product {
+  border: 1px solid #e5e5e5;
+  margin: 10px;
+}
+.product-thumb{
+  text-align: center;
+}
+.title-product, .slide-product .price{
+  display: -webkit-box;
+  height: 21px;
+  line-height: 1.3;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 10px;
+}
+.comment-tour{
+  display: flex
+}
+.el-button--primary{
+  background: #c3a30b;
+  border: 1px solid #c3a30b;
+  color: #000
 }
 </style>
