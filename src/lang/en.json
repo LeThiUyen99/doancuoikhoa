@@ -567,5 +567,7 @@
   "schedule": "Schedule",
   "departure_details": "Departure details",
   "main_attractions": "Main attractions",
-  "comment": "Comment"
+  "comment": "Comment",
+  "location": "Where do you want to go",
+  "hot_tour": "Highlights tour"
 }

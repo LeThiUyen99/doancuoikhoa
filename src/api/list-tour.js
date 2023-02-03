@@ -44,6 +44,13 @@ class ListTourResource extends Resource {
       method: 'get'
     })
   }
+  hotTour(query) {
+    return request({
+      url: `/${this.uri}/tour_hot?${this.getVerify()}`,
+      method: 'get',
+      params: query
+    })
+  }
 }
 
 export { ListTourResource as default }

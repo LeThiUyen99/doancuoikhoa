@@ -98,7 +98,7 @@
                   :autoplay="true"
                 >
                   <slide v-for="same in tour_same" :key="same.id">
-                    <div class="slide-product">
+                    <el-card :body-style="{ padding: '0px' }" class="slide-product">
                       <div class="product-thumb">
                         <div class="thumb-wrapper">
                           <div>
@@ -119,7 +119,7 @@
                           <span>{{ $i18n.t('price_vnd').format(formatNumber(same.price)) }}</span>
                         </p>
                       </div>
-                    </div>
+                    </el-card>
                   </slide>
                 </carousel>
               </el-row>
@@ -267,6 +267,7 @@ export default {
 .main_attractions{
   background: #c3a30b;
   padding: 10px;
+  color: #fff
 }
 .departure_details{
   float: right;
@@ -288,7 +289,7 @@ export default {
 .el-image-related {
   height: 300px;
 }
-.thumb-wrapper .el-image__error, .el-image__placeholder, .el-image__inner{
+.same-tour-list .thumb-wrapper .el-image__error, .same-tour-list .el-image__placeholder, .same-tour-list .el-image__inner{
   min-height: 300px;
   min-width: 323px;
 }
@@ -312,9 +313,14 @@ export default {
 .comment-tour{
   display: flex
 }
-.el-button--primary{
+.comment-des .el-button--primary{
   background: #c3a30b;
   border: 1px solid #c3a30b;
-  color: #000
+}
+.comment-col{
+  display: flex
+}
+.comment-col .el-image__inner{
+  border-radius: 50%
 }
 </style>

@@ -576,5 +576,7 @@
   "schedule": "Lịch trình",
   "departure_details": "Chi tiết khởi hành",
   "main_attractions": "Điểm tham quan chính",
-  "comment": "Bình luận"
+  "comment": "Bình luận",
+  "location": "Bạn muốn đi đâu",
+  "hot_tour": "Tour nổi bật"
 }
