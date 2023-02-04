@@ -35,9 +35,9 @@
                       <div v-for="itinerary in detail.tour_itinerary" :key="itinerary.id" class="tour_itinerary">
                         <div>{{ `${itinerary.day}: ${itinerary.name}` }}</div>
                         <div v-html="itinerary.description" />
-                        <!--                        <div class="thumb">-->
-                        <!--                          <el-image :src="url + itinerary.image" />-->
-                        <!--                        </div>-->
+                        <div class="thumb">
+                          <el-image v-if="itinerary.image" :src="url + itinerary.image" />
+                        </div>
                       </div>
                     </div>
                   </el-col>

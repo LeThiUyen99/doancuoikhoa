@@ -569,5 +569,12 @@
   "main_attractions": "Main attractions",
   "comment": "Comment",
   "location": "Where do you want to go",
-  "hot_tour": "Highlights tour"
+  "hot_tour": "Highlights tour",
+  "all_cate": "All categories",
+  "start_date": "Start date",
+  "all_country": "All country",
+  "advanced_search": "Advanced Search",
+  "travel_experience": "Travel experience",
+  "detail": "Detail",
+  "related_news": "Related news"
 }

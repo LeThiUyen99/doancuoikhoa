@@ -155,6 +155,28 @@ export const constantRoutes = [
       }
     ]
   },
+  {
+    path: '/blog',
+    component: LayoutCustomer,
+    hidden: true,
+    children: [
+      {
+        path: '/blog',
+        component: () => import('@/views/blog/list')
+      }
+    ]
+  },
+  {
+    path: '/blog-detail',
+    component: LayoutCustomer,
+    hidden: true,
+    children: [
+      {
+        path: '/blog-detail',
+        component: () => import('@/views/blog_detail/list')
+      }
+    ]
+  },
   // {
   //   path: '/dashboard',
   //   component: Layout,

@@ -578,5 +578,12 @@
   "main_attractions": "Điểm tham quan chính",
   "comment": "Bình luận",
   "location": "Bạn muốn đi đâu",
-  "hot_tour": "Tour nổi bật"
+  "hot_tour": "Tour nổi bật",
+  "all_cate": "Tất cả loại tour",
+  "start_date": "Ngày bắt đầu",
+  "all_country": "Tất cả quốc gia",
+  "advanced_search": "Tìm kiếm nâng cao",
+  "travel_experience": "Kinh nghiệm du lịch",
+  "detail": "Chi tiết",
+  "related_news": "Tin liên quan"
 }

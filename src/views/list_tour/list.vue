@@ -67,6 +67,11 @@ export default {
   },
   created() {
     this.listQuery.category_id = this.$route.query.category_id
+    this.listQuery.q = this.$route.query.q
+    this.listQuery.start_date = this.$route.query.start_date
+    this.listQuery.expire_date = this.$route.query.expire_date
+    this.listQuery.country_id = this.$route.query.country_id
+    this.listQuery.price = this.$route.query.price
     this.requestListTour()
   },
   methods: {

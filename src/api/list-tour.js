@@ -51,6 +51,21 @@ class ListTourResource extends Resource {
       params: query
     })
   }
+
+  cateList(query) {
+    return request({
+      url: `/${this.uri}/list_cate?${this.getVerify()}`,
+      method: 'get',
+      params: query
+    })
+  }
+  getCountryList(query) {
+    return request({
+      url: `/tour/country?${this.getVerify()}`,
+      method: 'get',
+      params: query
+    })
+  }
 }
 
 export { ListTourResource as default }
