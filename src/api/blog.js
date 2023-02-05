@@ -24,6 +24,13 @@ class BlogResource extends Resource {
       method: 'get'
     })
   }
+  blogNew(query) {
+    return request({
+      url: `/${this.uri}/new_blog?${this.getVerify()}`,
+      method: 'get',
+      params: query
+    })
+  }
 }
 
 export { BlogResource as default }

@@ -1,5 +1,5 @@
 <template>
-  <el-row class="sidebar">
+  <el-row v-if="!$route.meta.hideSidebar" class="sidebar">
     <div class="hero-wrap js-fullheight" :style="{'background-image': 'url(' + require('@/assets/images/bg_1.jpg') + ')', 'height':'566px', 'background-size': 'cover', 'background-position': 'center'}">
       <el-row :gutter="20" class="search-tour">
         <el-col :span="18" :offset="3">

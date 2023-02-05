@@ -1,7 +1,14 @@
 <template>
   <div class="detail-container">
+    <div class="thumbnail">
+      <el-carousel indicator-position="outside" :interval="5000" arrow="always" height="500px">
+        <el-carousel-item v-for="img in detail.tour_images" :key="img.id">
+          <el-image :src="url + img.url" fit="cover" />
+        </el-carousel-item>
+      </el-carousel>
+    </div>
     <el-row :gutter="20">
-      <el-col :span="18" :offset="3">
+      <el-col :span="22" :offset="1">
         <div class="grid-content bg-purple">
           <div class="detail-item">
             <div class="content">
@@ -54,6 +61,21 @@
               <el-row v-if="showComment" class="comment-tour">
                 <el-col :span="13" class="list-comment">
                   <div class="grid-content bg-purple">
+                    <div class="feedback">
+                      <div class="thumb">
+                        <el-image :src="default_user" style="width: 30px; height: 30px; border-radius: 50%;" />
+                      </div>
+                      <el-form :model="commentForm">
+                        <el-rate
+                          v-model="commentForm.rating"
+                          :colors="colors"
+                        />
+                        <el-input v-model="commentForm.comment" type="textarea" :placeholder="$t('content')" />
+                        <el-form-item class="btn-comment" size="large">
+                          <el-button :loading="loadingSubmit" type="primary" @click="onSubmit">{{ $t('comment') }}</el-button>
+                        </el-form-item>
+                      </el-form>
+                    </div>
                     <div v-for="comment in commets" :key="comment.id" class="comment-col">
                       <div class="thumb">
                         <el-image :src="default_user" style="width: 30px; height: 30px;" />
@@ -68,29 +90,27 @@
                 </el-col>
                 <el-col :span="11" class="form-comment">
                   <div class="grid-content bg-purple-light comment-des">
-                    <h3>{{ $t('comment') }}</h3>
-                    <el-form :model="commentForm">
-                      <el-rate
-                        v-model="commentForm.rating"
-                        :colors="colors"
-                      />
-                      <el-form-item :label="$t('content')">
-                        <el-input v-model="commentForm.comment" type="textarea" :placeholder="$t('content')" />
-                      </el-form-item>
-                      <el-form-item :label="$t('name')">
-                        <el-input v-model="commentForm.name" disabled :placeholder="$t('name')" />
-                      </el-form-item>
-                      <el-form-item :label="$t('email')">
-                        <el-input v-model="commentForm.email" disabled :placeholder="$t('email')" />
-                      </el-form-item>
-                      <el-form-item size="large">
-                        <el-button :loading="loadingSubmit" type="primary" @click="onSubmit">{{ $t('comment') }}</el-button>
-                      </el-form-item>
-                    </el-form>
+                    <h3>{{ detail.name }}</h3>
+                    <div class="info-tour">
+                      <div class="info-tour-left">
+                        <p class="price">{{ `${formatNumber(detail.price)} ${detail.currency}` }}</p>
+                      </div>
+                      <div class="info-tour-right">
+                        <p class="active">{{ `${$t('active')}: ${(detail.active === 1) ? $t('dont_accept_guests') : $t('receiving_guests')}` }}</p>
+                        <p class="start-date">{{ `${ $t('start_date')}: ${convertDate(detail.start_date)}` }}</p>
+                        <el-button type="" @click="onShowBookTour">{{ $t('book_tour') }}</el-button>
+                        <p>
+                          <span>HOTLINE : </span>
+                          <span>0936.425.552</span>
+                        </p>
+                      </div>
+                    </div>
+                    <dialog-form-book-tour :show-dialog="onShowDialog" :object-data="objectData" @onClickButtonDialog="handleClickButtonDialog" />
                   </div>
                 </el-col>
               </el-row>
               <el-row class="same-tour-list">
+                <h3>{{ $t('related_news') }}</h3>
                 <carousel
                   :per-page="5"
                   :pagination-enabled="false"
@@ -132,7 +152,8 @@
 </template>
 
 <script>
-import { formatNumber } from '@/utils/convert'
+import DialogFormBookTour from './compoments/DialogFormBookTour.vue'
+import { formatNumber, convertDate } from '@/utils/convert'
 import { Carousel, Slide } from 'vue-carousel'
 import default_user from '@/assets/images/default_user.png'
 import BASE_URL from '@/constant/domain'
@@ -143,7 +164,7 @@ const listTourResource = new ListTourResource()
 
 export default {
   name: 'List',
-  components: { Carousel, Slide },
+  components: { Carousel, Slide, DialogFormBookTour },
 
   data() {
     return {
@@ -161,7 +182,9 @@ export default {
       loadingCommnet: false,
       commets: [],
       showComment: false,
-      tour_same: []
+      tour_same: [],
+      onShowDialog: false,
+      objectData: {}
     }
   },
   created() {
@@ -171,6 +194,17 @@ export default {
   },
 
   methods: {
+    onShowBookTour() {
+      this.objectData = Object.assign({}, this.detail)
+      this.onShowDialog = true
+    },
+    handleClickButtonDialog(object) {
+      const { dialog, reload } = object
+      this.onShowDialog = dialog
+      if (reload) {
+        this.requestDetailList()
+      }
+    },
     requestShowComment() {
       if (account) {
         this.showComment = true
@@ -229,7 +263,8 @@ export default {
         }
       })
     },
-    formatNumber
+    formatNumber,
+    convertDate
   }
 }
 </script>
@@ -310,9 +345,6 @@ export default {
   text-overflow: ellipsis;
   padding: 0 10px;
 }
-.comment-tour{
-  display: flex
-}
 .comment-des .el-button--primary{
   background: #c3a30b;
   border: 1px solid #c3a30b;
@@ -322,5 +354,39 @@ export default {
 }
 .comment-col .el-image__inner{
   border-radius: 50%
+}
+.detail-container{
+  margin-top: 110px;
+}
+.thumbnail .el-image{
+  width: 100%;
+}
+.info-tour{
+  display: flex;
+  justify-content: space-between;
+}
+.info-tour-left, .info-tour-right{
+  width: 100%;
+}
+.info-tour-right .el-button{
+  border: 1px solid #c3a30b;
+  background: #c3a30b;
+  width: 100%;
+  color: #fff;
+}
+.feedback{
+  display: flex;
+}
+.feedback .el-form{
+  width: 100%;
+  padding-left: 10px;
+}
+.feedback .btn-comment{
+  text-align: right;
+  padding: 10px 0;
+}
+.feedback .btn-comment .el-button{
+  border: 1px solid #c3a30b;
+  background: #c3a30b;
 }
 </style>

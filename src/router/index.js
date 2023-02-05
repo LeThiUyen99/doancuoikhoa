@@ -118,7 +118,8 @@ export const constantRoutes = [
     children: [
       {
         path: '/about',
-        component: () => import('@/views/customer-view/about/index')
+        component: () => import('@/views/customer-view/about/index'),
+        meta: { hide: true, hideSidebar: true }
       }
     ]
   },
@@ -129,7 +130,8 @@ export const constantRoutes = [
     children: [
       {
         path: '/contact',
-        component: () => import('@/views/customer-view/contact/index')
+        component: () => import('@/views/customer-view/contact/index'),
+        meta: { hide: true, hideSidebar: true }
       }
     ]
   },
@@ -151,7 +153,8 @@ export const constantRoutes = [
     children: [
       {
         path: '/detail',
-        component: () => import('@/views/detail/list')
+        component: () => import('@/views/detail/list'),
+        meta: { hide: true, hideSidebar: true }
       }
     ]
   },
@@ -162,7 +165,8 @@ export const constantRoutes = [
     children: [
       {
         path: '/blog',
-        component: () => import('@/views/blog/list')
+        component: () => import('@/views/blog/list'),
+        meta: { hide: true, hideSidebar: true }
       }
     ]
   },
@@ -173,7 +177,8 @@ export const constantRoutes = [
     children: [
       {
         path: '/blog-detail',
-        component: () => import('@/views/blog_detail/list')
+        component: () => import('@/views/blog_detail/list'),
+        meta: { hide: true, hideSidebar: true }
       }
     ]
   },

@@ -1,7 +1,7 @@
 <template>
   <div class="app-contain">
     <el-row :gutter="20">
-      <el-col :span="18" :offset="3">
+      <el-col :span="22" :offset="1">
         <div class="grid-content bg-purple">
           <el-row class="hot-tour-list">
             <el-col :span="24">
@@ -17,10 +17,35 @@
                   :navigation-prev-label="prevLabel"
                 >
                   <slide v-for="hot in tour_hot" :key="hot.id" class="tour-list">
-                    <el-card :body-style="{ padding: '0px', backgroundImage: `url('${url + hot.images}')`, width:'100%', height: '470px', backgroundSize: 'cover', backgroundPosition: 'bottom' }" class="card-tour">
-                      <!--                        <el-image :src="url + tour.images" fit="cover" />-->
-                      <div class="item-tour">
-                        <h3 class="name-tour">{{ hot.name }}</h3>
+                    <!-- <el-card :body-style="{ padding: '0px', backgroundImage: `url('${url + hot.images}')`, width:'100%', height: '470px', backgroundSize: 'cover', backgroundPosition: 'bottom' }" class="card-tour"> -->
+                    <el-card :body-style="{ padding: '0px'}">
+                      <div class="landing--tour-data-single landing--tour-data">
+                        <div class="landing--tour-item">
+                          <div class="overlay  available">
+                            <el-image :src="url + hot.images" fit="cover" />
+                          </div>
+                          <div class="item-tour text landing--tour-item_content">
+                            <h3 class="name-tour">{{ hot.name }}</h3>
+                            <div class="time row">
+                              <div class="col-md-7 col-sm-6 text-end">Thời gian:</div>
+                              <div class="col-md-5 col-sm-6 text-start text-lowercase">3 Ngày 2 Đêm</div>
+                            </div>
+                            <div class="departure-date row">
+                              <div class="col-md-7 col-sm-6 text-end">Ngày khởi hành:
+                              </div>
+                              <div class="col-md-5 col-sm-6 text-start">{{ convertDate(hot.start_date) }}</div>
+                            </div>
+                            <div class="price row">
+                              <div class="col-md-7 col-sm-6 text-end">Giá Tour:</div>
+                              <div class="col-md-5 col-sm-6 text-start">{{ `${formatNumber(hot.price)} ${hot.currency}` }}</div>
+                            </div>
+                            <div class="detail text-center">
+                              <router-link class="home-link" :to="`/detail?id=${hot.id}`">
+                                <span class="detail-tour text-capitalize">{{ $t('detail') }}</span>
+                              </router-link>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </el-card>
                   </slide>
@@ -35,10 +60,40 @@
                 <el-col v-loading="loadingTable" :span="24" class="list-products">
                   <el-row :gutter="12">
                     <el-col v-for="tour in tours" :key="tour.id" :span="8" class="tour-list">
-                      <el-card :body-style="{ padding: '0px', backgroundImage: `url('${url + tour.images}')`, width:'100%', height: '470px', backgroundSize: 'cover', backgroundPosition: 'bottom' }" class="card-tour">
-                        <!--                        <el-image :src="url + tour.images" fit="cover" />-->
+                      <!-- <el-card :body-style="{ padding: '0px', backgroundImage: `url('${url + tour.images}')`, width:'100%', height: '470px', backgroundSize: 'cover', backgroundPosition: 'bottom' }" class="card-tour">
+                        <el-image :src="url + tour.images" fit="cover" />
                         <div class="item-tour">
                           <h3 class="name-tour">{{ tour.name }}</h3>
+                        </div>
+                      </el-card> -->
+                      <el-card :body-style="{ padding: '0px'}">
+                        <div class="landing--tour-data-single landing--tour-data">
+                          <div class="landing--tour-item">
+                            <div class="overlay  available">
+                              <el-image :src="url + tour.images" fit="cover" />
+                            </div>
+                            <div class="item-tour text landing--tour-item_content">
+                              <h3 class="name-tour">{{ tour.name }}</h3>
+                              <div class="time row">
+                                <div class="col-md-7 col-sm-6 text-end">Thời gian:</div>
+                                <div class="col-md-5 col-sm-6 text-start text-lowercase">3 Ngày 2 Đêm</div>
+                              </div>
+                              <div class="departure-date row">
+                                <div class="col-md-7 col-sm-6 text-end">Ngày khởi hành:
+                                </div>
+                                <div class="col-md-5 col-sm-6 text-start">{{ convertDate(tour.start_date) }}</div>
+                              </div>
+                              <div class="price row">
+                                <div class="col-md-7 col-sm-6 text-end">Giá Tour:</div>
+                                <div class="col-md-5 col-sm-6 text-start">{{ `${formatNumber(tour.price)} ${tour.currency}` }}</div>
+                              </div>
+                              <div class="detail text-center">
+                                <router-link class="home-link" :to="`/detail?id=${tour.id}`">
+                                  <span class="detail-tour text-capitalize">{{ $t('detail') }}</span>
+                                </router-link>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </el-card>
                     </el-col>
@@ -54,7 +109,8 @@
 </template>
 
 <script>
-import { formatNumber } from '@/utils/convert'
+require('@/assets/css/home.css')
+import { formatNumber, convertDate } from '@/utils/convert'
 import { Carousel, Slide } from 'vue-carousel'
 import BASE_URL from '@/constant/domain'
 import ListTourResource from '@/api/list-tour'
@@ -97,7 +153,8 @@ export default {
         }
       })
     },
-    formatNumber
+    formatNumber,
+    convertDate
   }
 }
 </script>
@@ -126,28 +183,13 @@ export default {
   width: 40px;
   z-index: 1;
 }
-{
-  align-items: center;
-  background-color: #fff;
-  background-position: 0,0;
-  background-size: 200% 100%;
-  border-radius: 50%;
-  box-shadow: 0 3px 6px 0 rgb(0 0 0 / 10%);
-  cursor: pointer;
-  display: flex;
-  height: 40px;
-  justify-content: center;
-  position: absolute;
-  right: -20px;
-  top: 48%;
-  transform: translateY(-50%);
-  width: 40px;
-  z-index: 1;
-}
 </style>
 <style scoped>
+.app-contain{
+  margin-top: 50px;
+}
 .tour-list {
-  width: 25%;
+  width: 20%;
   height: 470px;
   margin-bottom: 20px;
 }
@@ -167,28 +209,6 @@ export default {
   margin: 0;
   color: #fff;
   font-size: 1.714em
-}
-.item-tour{
-  -webkit-box-pack: center;
-  align-items: center;
-  text-align: center;
-  background: transparent;
-  border: 0 solid #fff;
-  display: flex;
-  flex: initial;
-  flex-flow: row wrap;
-  left: 50%;
-  line-height: 1.5;
-  max-width: 100%;
-  padding-left: 5%;
-  padding-right: 5%;
-  position: relative;
-  top: 50%;
-  transform: translate(-50%,-50%);
-  width: 100%;
-  cursor: pointer;
-  /*background: #000;*/
-  /*opacity: .5;*/
 }
 .title-tour {
   text-align: center;

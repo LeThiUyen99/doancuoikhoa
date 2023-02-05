@@ -66,6 +66,13 @@ class ListTourResource extends Resource {
       params: query
     })
   }
+  storeBookTour(resource) {
+    return request({
+      url: `/book_tour/create?${this.getVerify()}`,
+      method: 'post',
+      data: resource
+    })
+  }
 }
 
 export { ListTourResource as default }

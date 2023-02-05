@@ -96,11 +96,11 @@ export default {
     },
     requestNewBlogList() {
       this.loadingTable = true
-      blogResource.blogList(this.listQuery).then(res => {
+      blogResource.blogNew().then(res => {
         this.loadingTable = false
         const { error_code, data } = res
         if (error_code === 0) {
-          this.blogs = data.data
+          this.blogs = data.news
         }
       })
     },
@@ -181,5 +181,8 @@ export default {
   }
   .content-related{
     padding-left: 20px;
+  }
+  .app-container{
+    margin-top: 100px;
   }
 </style>

@@ -33,7 +33,7 @@
             </el-col>
             <el-col :span="9">
               <div class="grid-content bg-purple-light">
-                <div v-for="item in blogs" :key="item.id" v-loading="loadingTable" class="new-blog">
+                <div v-for="item in news" :key="item.id" v-loading="loadingTable" class="new-blog">
                   <div class="thumb">
                     <router-link class="home-link" :to="`/blog-detail?id=${item.id}`">
                       <el-image :src="url + item.images" fit="cover" />
@@ -79,15 +79,27 @@ export default {
       listQuery: Object.assign({}, defaultQuery),
       url: BASE_URL,
       loadingTable: false,
-      place: place
+      place: place,
+      news: []
     }
   },
 
   created() {
     this.requestBlogList()
+    this.requestNewBlog()
   },
 
   methods: {
+    requestNewBlog() {
+      this.loadingTable = true
+      blogResource.blogNew().then(res => {
+        this.loadingTable = false
+        const { error_code, data } = res
+        if (error_code === 0) {
+          this.news = data.news
+        }
+      })
+    },
     requestBlogList() {
       this.loadingTable = true
       blogResource.blogList(this.listQuery).then(res => {

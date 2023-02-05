@@ -125,4 +125,13 @@ export default {
 a, h3{
   margin: 0;
 }
+.title-tour{
+  color: #000;
+}
+.title-tour:hover {
+  color: #c3a30b;
+}
+.app-contain{
+  margin-top: 50px;
+}
 </style>

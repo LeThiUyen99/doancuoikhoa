@@ -19,7 +19,7 @@
             </el-dropdown>
           </li>
           <li class="nav-item"><router-link :to="`/list-tour?category_id=${cate_id}`" class="nav-link">Tour trong nước</router-link></li>
-          <li class="nav-item"><router-link to="/book-tour" class="nav-link">Book tour</router-link></li>
+          <!-- <li class="nav-item"><router-link to="/book-tour" class="nav-link">Book tour</router-link></li> -->
           <li class="nav-item"><router-link to="/about" class="nav-link">About</router-link></li>
           <li class="nav-item"><router-link to="/blog" class="nav-link">Blog</router-link></li>
           <li class="nav-item"><router-link to="/contact" class="nav-link">Contact</router-link></li>
@@ -8492,7 +8492,7 @@ h1, h2, h3, h4, h5,
   top: -8px;
   left: 0;
   right: 0;
-  z-index: 3;
+  z-index: 100;
   position: fixed;
   top: 0px;
 }

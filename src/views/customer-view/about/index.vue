@@ -185,4 +185,7 @@ export default {
 .el-carousel__container {
   height: 581px;
 }
+.about-us{
+  margin-top: 110px;
+}
 </style>
