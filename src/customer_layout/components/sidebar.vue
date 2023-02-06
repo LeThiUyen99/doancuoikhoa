@@ -7,8 +7,8 @@
             <el-form class="form-search">
               <div class="search-top">
                 <el-input v-model="q" :placeholder="$t('search')" />
-                <el-date-picker v-model="start_date" type="date" :placeholder="$t('start_date')" style="width:100%; margin: 0 10px" />
-                <el-date-picker v-model="expire_date" type="date" :placeholder="$t('date_finish')" style="width:100%" />
+                <el-date-picker v-model="startDate" type="date" :placeholder="$t('start_date')" style="width:100%; margin: 0 10px" />
+                <el-date-picker v-model="expireDate" type="date" :placeholder="$t('date_finish')" style="width:100%" />
                 <el-button type="primary" icon="el-icon-search" class="btn-search" @click="searchTour">Search</el-button>
               </div>
               <div v-if="seen" id="hide" class="search-bottom">
@@ -53,8 +53,8 @@ export default {
   data() {
     return {
       q: '',
-      start_date: '',
-      expire_date: '',
+      startDate: '',
+      expireDate: '',
       price: '',
       categories: [],
       cateId: '',
@@ -70,6 +70,8 @@ export default {
   },
   methods: {
     searchTour() {
+      this.start_date = (new Date(this.startDate)).getTime()
+      this.expire_date = (new Date(this.expireDate)).getTime()
       if (this.$route.path === '/list-tour') {
         let url = `/list-tour?q=${this.q.trim()}&category_id=${this.cateId}&start_date=${this.start_date}&expire_date=${this.expire_date}&country_id=${this.countryId}&price=${this.price}`
         if (this.seen) url += '&type=advance'
