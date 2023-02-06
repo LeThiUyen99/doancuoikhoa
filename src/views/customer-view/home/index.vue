@@ -183,6 +183,9 @@ export default {
   width: 40px;
   z-index: 1;
 }
+.el-card{
+  border: none;
+}
 </style>
 <style scoped>
 .app-contain{
@@ -216,4 +219,7 @@ export default {
   text-transform: uppercase;
 }
 
+.el-image{
+  display: block;
+}
 </style>

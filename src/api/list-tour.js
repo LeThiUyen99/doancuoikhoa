@@ -73,6 +73,13 @@ class ListTourResource extends Resource {
       data: resource
     })
   }
+  historyList(query) {
+    return request({
+      url: `/${this.uri}/history?${this.getVerify()}`,
+      method: 'get',
+      params: query
+    })
+  }
 }
 
 export { ListTourResource as default }

@@ -182,6 +182,18 @@ export const constantRoutes = [
       }
     ]
   },
+  {
+    path: '/history',
+    component: LayoutCustomer,
+    hidden: true,
+    children: [
+      {
+        path: '/history',
+        component: () => import('@/views/history/list'),
+        meta: { hide: true, hideSidebar: true }
+      }
+    ]
+  },
   // {
   //   path: '/dashboard',
   //   component: Layout,

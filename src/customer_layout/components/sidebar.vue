@@ -31,7 +31,7 @@
                 <el-select v-model="countryId" class="w-100" filterable remote :multiple-limit="1" :placeholder="$t('country')" style="margin: 0 10px">
                   <el-option v-for="country in countries" :key="country.id" :label="country.name" :value="country.id" />
                 </el-select>
-                <el-input type="number" v-model="price" :placeholder="$t('price')" class="price" />
+                <el-input v-model="price" type="number" :placeholder="$t('price')" class="price" />
                 <el-input type="hidden" />
               </div>
               <div class="control" @click="seen = !seen">
@@ -46,7 +46,6 @@
 </template>
 
 <script>
-import i18n from '@/lang/i18n'
 import ListTourResource from '@/api/list-tour'
 const listTourResource = new ListTourResource()
 export default {
@@ -58,8 +57,8 @@ export default {
       expire_date: '',
       price: '',
       categories: [],
-      cateId: 0,
-      countryId: 0,
+      cateId: '',
+      countryId: '',
       countries: [],
       seen: false
     }
@@ -67,11 +66,14 @@ export default {
   created() {
     this.requestcategories()
     this.requestCountryList()
+    if (this.$route.query.type === 'advance') this.seen = true
   },
   methods: {
     searchTour() {
       if (this.$route.path === '/list-tour') {
-        this.$router.push(`/list-tour?q=${this.q.trim()}&category_id=${this.cateId}&start_date=${this.start_date}&expire_date=${this.expire_date}&country_id=${this.countryId}&price=${this.price}`)
+        let url = `/list-tour?q=${this.q.trim()}&category_id=${this.cateId}&start_date=${this.start_date}&expire_date=${this.expire_date}&country_id=${this.countryId}&price=${this.price}`
+        if (this.seen) url += '&type=advance'
+        this.$router.push(url)
         window.location.reload()
       } else {
         this.$router.push(`/list-tour?q=${this.q.trim()}&category_id=${this.cateId}&start_date=${this.start_date}&expire_date=${this.expire_date}&country_id=${this.countryId}&price=${this.price}`)
@@ -81,7 +83,7 @@ export default {
       listTourResource.getCountryList().then(res => {
         const { error_code, data } = res
         if (error_code === 0) {
-          this.countries = [{ id: 0, name: i18n.t('all_country') }, ...data.data]
+          this.countries = [...data.data]
         }
       })
     },
@@ -89,7 +91,7 @@ export default {
       listTourResource.cateList().then(res => {
         const { error_code, data } = res
         if (error_code === 0) {
-          this.categories = [{ id: 0, name: i18n.t('all_cate') }, ...data.list]
+          this.categories = [...data.list]
         }
       })
     }
