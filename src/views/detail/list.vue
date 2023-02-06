@@ -8,7 +8,7 @@
       </el-carousel>
     </div>
     <el-row :gutter="20">
-      <el-col :span="22" :offset="1">
+      <el-col :span="18" :offset="3">
         <div class="grid-content bg-purple">
           <div class="detail-item">
             <div class="content">
@@ -76,28 +76,31 @@
                         </el-form-item>
                       </el-form>
                     </div>
-                    <div v-for="comment in commets" :key="comment.id" class="comment-col">
+                    <div v-loading="loadingCommnet" v-for="comment in commets" :key="comment.id" class="comment-col">
                       <div class="thumb">
                         <el-image :src="default_user" style="width: 30px; height: 30px;" />
                       </div>
                       <div class="item-comment">
                         <el-rate v-model="comment.rating" disabled />
-                        <p>{{ comment.user? comment.user.name: '' }}</p>
-                        <p>{{ comment.comment }}</p>
+                        <p style="margin: 0;">
+                          <span style="color: #0a58ca; font-weight: bold; padding-right: 10px">{{ comment.user? comment.user.name: '' }}</span>
+                          <span>{{ comment.comment }}</span>
+                        </p>
                       </div>
                     </div>
                   </div>
                 </el-col>
                 <el-col :span="11" class="form-comment">
                   <div class="grid-content bg-purple-light comment-des">
-                    <h3>{{ detail.name }}</h3>
+                    <h3 class="title-book-tour">{{ detail.name }}</h3>
                     <div class="info-tour">
                       <div class="info-tour-left">
+                        <p class="time">{{ `${$t('time')}: ${detail.time}` }}</p>
                         <p class="price">{{ `${formatNumber(detail.price)} ${detail.currency}` }}</p>
                       </div>
                       <div class="info-tour-right">
                         <p class="active">{{ `${$t('active')}: ${(detail.active === 1) ? $t('dont_accept_guests') : $t('receiving_guests')}` }}</p>
-                        <p class="start-date">{{ `${ $t('start_date')}: ${convertDate(detail.start_date)}` }}</p>
+                        <p class="start-date">{{ `${ $t('departure_day')}: ${convertDate(detail.start_date)}` }}</p>
                         <el-button type="" @click="onShowBookTour">{{ $t('book_tour') }}</el-button>
                         <p>
                           <span>HOTLINE : </span>
@@ -116,27 +119,35 @@
                   :pagination-enabled="false"
                   :mouse-drag="false"
                   :autoplay="true"
+                  :navigation-enabled="true"
+                  navigation-next-label
+                  navigation-prev-label
                 >
                   <slide v-for="same in tour_same" :key="same.id">
                     <el-card :body-style="{ padding: '0px' }" class="slide-product">
                       <div class="product-thumb">
                         <div class="thumb-wrapper">
                           <div>
-                            <el-image
-                              class="el-image-related"
-                              :src="url + same.images"
-                              :product="same"
-                              fit="cover"
-                            />
+                            <router-link class="home-link" :to="`/detail?id=${same.id}`">
+                              <el-image
+                                class="el-image-related"
+                                :src="url + same.images"
+                                :product="same"
+                                fit="cover"
+                              />
+                            </router-link>
                           </div>
                         </div>
                       </div>
-                      <div>
-                        <p class="title-product">{{ same.name }}</p>
+                      <div class="col-name">
+                        <router-link class="home-link" :to="`/detail?id=${same.id}`">
+                          <p class="title-product">{{ same.name }}</p>
+                        </router-link>
                       </div>
-                      <div>
+                      <div class="col-price">
+                        <p class="start-date">{{ `${ $t('departure_day')}: ${convertDate(same.start_date)}` }}</p>
                         <p class="price" style="font-size:13px">
-                          <span>{{ $i18n.t('price_vnd').format(formatNumber(same.price)) }}</span>
+                          <span>{{ `${$t('price')}: ${$i18n.t('price_vnd').format(formatNumber(same.price))}` }}</span>
                         </p>
                       </div>
                     </el-card>
@@ -322,15 +333,17 @@ export default {
   border-radius: 20px;
 }
 .el-image-related {
-  height: 300px;
+  height: 350px;
+  width: 100%;
 }
 .same-tour-list .thumb-wrapper .el-image__error, .same-tour-list .el-image__placeholder, .same-tour-list .el-image__inner{
   min-height: 300px;
   min-width: 323px;
 }
 .slide-product {
-  border: 1px solid #e5e5e5;
-  margin: 10px;
+  border: none;
+  margin: 35px 10px;
+  border-radius: 20px;
 }
 .product-thumb{
   text-align: center;
@@ -350,7 +363,13 @@ export default {
   border: 1px solid #c3a30b;
 }
 .comment-col{
-  display: flex
+  display: flex;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #eee;
+}
+.comment-col:last-child{
+  border-bottom: none;
 }
 .comment-col .el-image__inner{
   border-radius: 50%
@@ -388,5 +407,39 @@ export default {
 .feedback .btn-comment .el-button{
   border: 1px solid #c3a30b;
   background: #c3a30b;
+}
+.item-comment{
+  padding-left: 10px;
+}
+.slide-product:hover{
+box-shadow: 0 7px 40px 0 rgb(0 0 0 / 15%);
+margin-bottom: 24px;
+position: relative;
+}
+.info-tour-left .price{
+  font-size: 1.7em;
+  font-weight: bold;
+  color: #c3a30b;
+}
+.title-book-tour{
+  font-size: 2em;
+  margin: 0;
+}
+.same-tour-list .price{
+  font-weight: bold;
+  color: #c3a30b;
+}
+.start-date{
+  padding: 5px 10px;
+  font-size: 0.75em;
+  font-style: italic;
+  color: #9aaabf;
+  margin: 0;
+}
+.same-tour-list p{
+  margin: 0;
+}
+.col-price {
+  padding-bottom: 30px;
 }
 </style>

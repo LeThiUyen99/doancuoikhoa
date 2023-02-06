@@ -12,7 +12,7 @@
       </el-form-item>
       <el-form-item :label="$t('start_date')">
         <!-- <el-input v-model="body.start_date" :placeholder="$t('start_date')" /> -->
-        <el-date-picker v-model="body.start_date" type="date" :placeholder="$t('start_date')" style="width:100%" />
+        <el-date-picker v-model="body.start_date" type="date" :placeholder="$t('start_date')" style="width:100%" :picker-options="datePickerOptions" />
       </el-form-item>
       <el-form-item :label="$t('quantity')">
         <el-input v-model="body.guest_number" :placeholder="$t('quantity')" />
@@ -52,6 +52,15 @@ export default {
       dialog: { titleName: i18n.t('book_tour'), buttonName: i18n.t('book_tour') },
       body: {},
       loadingSubmit: false
+    }
+  },
+  computed: {
+    datePickerOptions() {
+      return {
+        disabledDate(date) {
+          return date < new Date()
+        }
+      }
     }
   },
   // watch: {

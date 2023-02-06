@@ -18,7 +18,7 @@
                 >
                   <slide v-for="hot in tour_hot" :key="hot.id" class="tour-list">
                     <!-- <el-card :body-style="{ padding: '0px', backgroundImage: `url('${url + hot.images}')`, width:'100%', height: '470px', backgroundSize: 'cover', backgroundPosition: 'bottom' }" class="card-tour"> -->
-                    <el-card :body-style="{ padding: '0px'}">
+                    <div>
                       <div class="landing--tour-data-single landing--tour-data">
                         <div class="landing--tour-item">
                           <div class="overlay  available">
@@ -27,8 +27,8 @@
                           <div class="item-tour text landing--tour-item_content">
                             <h3 class="name-tour">{{ hot.name }}</h3>
                             <div class="time row">
-                              <div class="col-md-7 col-sm-6 text-end">Thời gian:</div>
-                              <div class="col-md-5 col-sm-6 text-start text-lowercase">3 Ngày 2 Đêm</div>
+                              <div class="col-md-7 col-sm-6 text-end">{{$t('time')}}: </div>
+                              <div class="col-md-5 col-sm-6 text-start text-lowercase">{{ hot.time }}</div>
                             </div>
                             <div class="departure-date row">
                               <div class="col-md-7 col-sm-6 text-end">Ngày khởi hành:
@@ -47,7 +47,7 @@
                           </div>
                         </div>
                       </div>
-                    </el-card>
+                    </div>
                   </slide>
                 </carousel>
               </div>
@@ -66,7 +66,7 @@
                           <h3 class="name-tour">{{ tour.name }}</h3>
                         </div>
                       </el-card> -->
-                      <el-card :body-style="{ padding: '0px'}">
+                      <div>
                         <div class="landing--tour-data-single landing--tour-data">
                           <div class="landing--tour-item">
                             <div class="overlay  available">
@@ -75,16 +75,16 @@
                             <div class="item-tour text landing--tour-item_content">
                               <h3 class="name-tour">{{ tour.name }}</h3>
                               <div class="time row">
-                                <div class="col-md-7 col-sm-6 text-end">Thời gian:</div>
-                                <div class="col-md-5 col-sm-6 text-start text-lowercase">3 Ngày 2 Đêm</div>
+                                <div class="col-md-7 col-sm-6 text-end">{{$t('time')}}: </div>
+                                <div class="col-md-5 col-sm-6 text-start text-lowercase">{{ tour.time }}</div>
                               </div>
                               <div class="departure-date row">
-                                <div class="col-md-7 col-sm-6 text-end">Ngày khởi hành:
+                                <div class="col-md-7 col-sm-6 text-end">{{$t('departure_day')}}:
                                 </div>
                                 <div class="col-md-5 col-sm-6 text-start">{{ convertDate(tour.start_date) }}</div>
                               </div>
                               <div class="price row">
-                                <div class="col-md-7 col-sm-6 text-end">Giá Tour:</div>
+                                <div class="col-md-7 col-sm-6 text-end">{{ $t('price') }}:</div>
                                 <div class="col-md-5 col-sm-6 text-start">{{ `${formatNumber(tour.price)} ${tour.currency}` }}</div>
                               </div>
                               <div class="detail text-center">
@@ -95,7 +95,7 @@
                             </div>
                           </div>
                         </div>
-                      </el-card>
+                      </div>
                     </el-col>
                   </el-row>
                 </el-col>
@@ -185,6 +185,10 @@ export default {
 }
 .el-card{
   border: none;
+}
+.el-card.is-always-shadow {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
 }
 </style>
 <style scoped>

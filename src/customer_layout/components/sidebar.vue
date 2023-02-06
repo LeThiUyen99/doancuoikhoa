@@ -70,8 +70,8 @@ export default {
   },
   methods: {
     searchTour() {
-      this.start_date = (new Date(this.startDate)).getTime()
-      this.expire_date = (new Date(this.expireDate)).getTime()
+      this.start_date = (new Date(this.startDate)).getTime() ? (new Date(this.startDate)).getTime() : ''
+      this.expire_date = (new Date(this.expireDate)).getTime() ? (new Date(this.expireDate)).getTime() : ''
       if (this.$route.path === '/list-tour') {
         let url = `/list-tour?q=${this.q.trim()}&category_id=${this.cateId}&start_date=${this.start_date}&expire_date=${this.expire_date}&country_id=${this.countryId}&price=${this.price}`
         if (this.seen) url += '&type=advance'

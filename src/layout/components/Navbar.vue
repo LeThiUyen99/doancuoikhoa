@@ -29,8 +29,8 @@
           <router-link to="/">
             <el-dropdown-item divided>Dashboard</el-dropdown-item>
           </router-link>
-          <el-dropdown-item divided @click.native="logout">
-            <span style="display:block;">{{ $t('logout') }}</span>
+          <el-dropdown-item  divided @click.native="logout">
+            <span style="display:block; ">{{ $t('logout') }}</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>

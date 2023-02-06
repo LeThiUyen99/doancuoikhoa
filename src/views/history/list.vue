@@ -1,6 +1,12 @@
 <template>
-  <el-row>
-    <el-col />
+  <el-row class="history-container">
+    <el-row :gutter="20">
+      <el-col :span="22" :offset="1">
+        <div class="grid-content bg-purple">
+          <el-table v-loading="loadingTable"></el-table>
+        </div>
+      </el-col>
+    </el-row>
   </el-row>
 </template>
 
@@ -19,7 +25,8 @@ export default {
     return {
       histories: [],
       total: 0,
-      listQuery: Object.assign({}, defaultQuery)
+      listQuery: Object.assign({}, defaultQuery),
+      loadingTable: false
     }
   },
   created() {
@@ -28,7 +35,7 @@ export default {
   methods: {
     requestHistoryList() {
       this.listQuery.user_id = getUID()
-      listTourResource.historyList().then(res => {
+      listTourResource.historyList(this.listQuery).then(res => {
         const { error_code, data } = res
         if (error_code === 0) {
           this.histories = data.history

@@ -3645,7 +3645,10 @@ input[type="button"].btn-block {
 
 .nav-link {
   display: block;
-  padding: 0.5rem 1rem; }
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  text-transform: capitalize;
+}
 .nav-link:hover, .nav-link:focus {
   text-decoration: none; }
 .nav-link.disabled {
