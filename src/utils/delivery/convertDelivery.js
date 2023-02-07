@@ -1,29 +1,17 @@
 import I18n from '@/lang/i18n'
 
-export function setStateToStringDelivery(state) {
+export function setStateToStringDelivery(active) {
   let objectDelivery = {}
-  console.log('.....................state : ', state)
-  switch (state) {
+  console.log('.....................state : ', active)
+  switch (active) {
     case 0:
       objectDelivery = { typeName: 'warning', textName: I18n.t('confirm_wait') }
       break
     case 1:
-      objectDelivery = { typeName: 'warning', textName: I18n.t('wait_delivery') }
+      objectDelivery = { typeName: 'success', textName: I18n.t('confirmation_complete') }
       break
     case 2:
-      objectDelivery = { typeName: 'success', textName: I18n.t('delivery') }
-      break
-    case 3:
-      objectDelivery = { typeName: 'success', textName: I18n.t('delivered') }
-      break
-    case 4:
-      objectDelivery = { typeName: 'danger', textName: I18n.t('canceled') }
-      break
-    case 5:
-      objectDelivery = { typeName: 'danger', textName: I18n.t('return_order') }
-      break
-    case 6:
-      objectDelivery = { typeName: 'suscess', textName: I18n.t('delivery') }
+      objectDelivery = { typeName: 'danger', textName: I18n.t('cancel_tour') }
   }
   return objectDelivery
 }

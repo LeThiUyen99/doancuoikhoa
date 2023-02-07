@@ -333,7 +333,7 @@ export default {
   border-radius: 20px;
 }
 .el-image-related {
-  height: 350px;
+  height: 300px;
   width: 100%;
 }
 .same-tour-list .thumb-wrapper .el-image__error, .same-tour-list .el-image__placeholder, .same-tour-list .el-image__inner{
@@ -441,5 +441,11 @@ position: relative;
 }
 .col-price {
   padding-bottom: 30px;
+}
+.VueCarousel-inner{
+  width: 20%;
+}
+.VueCarousel-slide{
+  width: 100%;
 }
 </style>
