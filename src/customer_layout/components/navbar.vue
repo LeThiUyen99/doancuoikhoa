@@ -13,12 +13,12 @@
               <span class="el-dropdown-link">Tour nước ngoài</span>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item v-for="cate in categories" :key="cate.id" :value="cate.id">
-                  <router-link :to="`/list-tour?category_id=${cate.id}`" class="nav-link">{{ cate.name }}</router-link>
+                  <div class="nav-link" @click="clickTour(cate.id)">{{ cate.name }}</div>
                 </el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </li>
-          <li class="nav-item"><router-link :to="`/list-tour?category_id=${cate_id}`" class="nav-link">Tour trong nước</router-link></li>
+          <li class="nav-item"><div class="nav-link" @click="clickTour(cate_id)">Tour trong nước</div></li>
           <!-- <li class="nav-item"><router-link to="/book-tour" class="nav-link">Book tour</router-link></li> -->
           <li class="nav-item"><router-link to="/about" class="nav-link">About</router-link></li>
           <li class="nav-item"><router-link to="/blog" class="nav-link">Blog</router-link></li>
@@ -56,6 +56,16 @@ export default {
       removeAcountInfo()
       this.showUser = true
       location.reload()
+    },
+    clickTour(id) {
+      if (this.$route.path === '/list-tour') {
+        this.$router.push(
+          `/list-tour?category_id=${id}`
+        )
+        window.location.reload()
+      } else {
+        this.$router.push(`/list-tour?category_id=${id}`)
+      }
     },
     showUserIcon() {
       if (getUID()) {

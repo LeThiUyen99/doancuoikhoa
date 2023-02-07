@@ -128,21 +128,21 @@
                       <div class="product-thumb">
                         <div class="thumb-wrapper">
                           <div>
-                            <router-link class="home-link" :to="`/detail?id=${same.id}`">
+                            <div class="home-link" @click="clickDetail(same.id)">
                               <el-image
                                 class="el-image-related"
                                 :src="url + same.images"
                                 :product="same"
                                 fit="cover"
                               />
-                            </router-link>
+                            </div>
                           </div>
                         </div>
                       </div>
                       <div class="col-name">
-                        <router-link class="home-link" :to="`/detail?id=${same.id}`">
+                        <div class="home-link" @click="clickDetail(same.id)">
                           <p class="title-product">{{ same.name }}</p>
-                        </router-link>
+                        </div>
                       </div>
                       <div class="col-price">
                         <p class="start-date">{{ `${ $t('departure_day')}: ${convertDate(same.start_date)}` }}</p>
@@ -205,6 +205,13 @@ export default {
   },
 
   methods: {
+    clickDetail(id) {
+      this.$router.push(`/detail?id=${id}`)
+      this.requestDetailList().then(() => {
+        this.requestTourSameList()
+        this.requestCommentList()
+      })
+    },
     onShowBookTour() {
       this.objectData = Object.assign({}, this.detail)
       this.onShowDialog = true
@@ -255,6 +262,9 @@ export default {
         const { error_code, error_msg } = res
         if (error_code === 0) {
           this.$message.success(error_msg)
+          this.requestDetailList().then(() => {
+            this.requestCommentList()
+          })
         } else {
           this.$message.error(error_msg)
         }
@@ -361,6 +371,7 @@ export default {
 .comment-des .el-button--primary{
   background: #c3a30b;
   border: 1px solid #c3a30b;
+  padding: 10px 190px;
 }
 .comment-col{
   display: flex;
@@ -438,6 +449,7 @@ position: relative;
 }
 .same-tour-list p{
   margin: 0;
+  cursor: pointer;
 }
 .col-price {
   padding-bottom: 30px;

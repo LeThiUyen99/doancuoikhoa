@@ -215,7 +215,8 @@ export default {
 .name-tour{
   margin: 0;
   color: #fff;
-  font-size: 1.714em
+  font-size: 1.714em !important;
+  text-align: center;
 }
 .title-tour {
   text-align: center;

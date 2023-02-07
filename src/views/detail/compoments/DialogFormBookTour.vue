@@ -1,5 +1,5 @@
 <template>
-  <el-dialog :title="dialog.titleName" :visible.sync="showDialog" :before-close="handleClose" width="40%">
+  <el-dialog :title="dialog.titleName" :visible.sync="showDialog" :before-close="handleClose" width="40%" class="book-tour-dialog">
     <el-form :model="body">
       <el-form-item :label="$t('name')">
         <el-input v-model="body.customer_name" :placeholder="$t('name')" />
@@ -14,12 +14,11 @@
         <!-- <el-input v-model="body.start_date" :placeholder="$t('start_date')" /> -->
         <el-date-picker v-model="body.start_date" type="date" :placeholder="$t('start_date')" style="width:100%" :picker-options="datePickerOptions" />
       </el-form-item>
-      <el-form-item :label="$t('quantity')">
-        <el-input v-model="body.guest_number" :placeholder="$t('quantity')" />
+      <el-form-item :label="$t('people_amount')">
+        <el-input v-model="body.guest_number" :placeholder="$t('people_amount')" />
       </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
-      <el-button @click="handleClose">{{ $t('canel') }}</el-button>
       <el-button type="primary" :loading="loadingSubmit" @click="onSubmitForm('ruleForm')">{{ dialog.buttonName }}</el-button>
     </span>
   </el-dialog>
@@ -49,7 +48,7 @@ export default {
 
   data() {
     return {
-      dialog: { titleName: i18n.t('book_tour'), buttonName: i18n.t('book_tour') },
+      dialog: { titleName: i18n.t('book_tour'), buttonName: i18n.t('submit_tour') },
       body: {},
       loadingSubmit: false
     }
@@ -102,6 +101,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-
+<style>
+.book-tour-dialog .el-dialog__footer{
+  text-align: center;
+}
 </style>

@@ -171,4 +171,7 @@ h1{
   font-weight: bold;
   padding-left: 10px;
 }
+.app-container{
+  margin-top: 105px;
+}
 </style>

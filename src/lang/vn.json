@@ -589,5 +589,8 @@
   "book_tour": "Đặt tour",
   "receiving_guests": "Đang nhận khách",
   "dont_accept_guests": "Không nhận khách",
-  "departure_day": "Ngày khởi hành"
+  "departure_day": "Ngày khởi hành",
+  "people_amount": "Số người",
+  "submit_tour": "Gửi đăng ký",
+  "cancel_tour": "Hủy tour"
 }
