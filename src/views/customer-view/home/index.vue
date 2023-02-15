@@ -103,7 +103,7 @@
             </el-col>
           </el-row>
           <el-row class="chat-box">
-            <div class="icon-chat-box">
+            <div class="icon-chat-box" v-if="showChat">
               <div class="thumb" @click="clickChatBot">
                 <el-image :src="chat" style="width: 50px;; height: 50px;" />
               </div>
@@ -117,6 +117,8 @@
 </template>
 
 <script>
+import { getToken } from '@/utils/auth'
+
 require('@/assets/css/home.css')
 import chat from '@/assets/images/chatbox.png'
 import ChatBot from '@/views/customer-view/home/components/ChatBot'
@@ -138,14 +140,24 @@ export default {
       loadingHot: false,
       chat: chat,
       onShowDialog: false,
-      objectChat: {}
+      objectChat: {},
+      showChat: false
     }
   },
   created() {
     this.requestListTour()
     this.requestHotTour()
+    this.showMessageer()
   },
   methods: {
+    showMessageer() {
+      const token = getToken()
+      if (token) {
+        this.showChat = true
+      } else {
+        this.showChat = false
+      }
+    },
     clickChatBot() {
       this.onShowDialog = true
       this.objectChat = {}
