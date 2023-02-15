@@ -13,8 +13,6 @@
                   :mouse-drag="false"
                   :autoplay="true"
                   :navigation-enabled="true"
-                  :navigation-next-label="nextLabel"
-                  :navigation-prev-label="prevLabel"
                 >
                   <slide v-for="hot in tour_hot" :key="hot.id" class="tour-list">
                     <!-- <el-card :body-style="{ padding: '0px', backgroundImage: `url('${url + hot.images}')`, width:'100%', height: '470px', backgroundSize: 'cover', backgroundPosition: 'bottom' }" class="card-tour"> -->
@@ -27,7 +25,7 @@
                           <div class="item-tour text landing--tour-item_content">
                             <h3 class="name-tour">{{ hot.name }}</h3>
                             <div class="time row">
-                              <div class="col-md-7 col-sm-6 text-end">{{$t('time')}}: </div>
+                              <div class="col-md-7 col-sm-6 text-end">{{ $t('time') }}: </div>
                               <div class="col-md-5 col-sm-6 text-start text-lowercase">{{ hot.time }}</div>
                             </div>
                             <div class="departure-date row">
@@ -75,11 +73,11 @@
                             <div class="item-tour text landing--tour-item_content">
                               <h3 class="name-tour">{{ tour.name }}</h3>
                               <div class="time row">
-                                <div class="col-md-7 col-sm-6 text-end">{{$t('time')}}: </div>
+                                <div class="col-md-7 col-sm-6 text-end">{{ $t('time') }}: </div>
                                 <div class="col-md-5 col-sm-6 text-start text-lowercase">{{ tour.time }}</div>
                               </div>
                               <div class="departure-date row">
-                                <div class="col-md-7 col-sm-6 text-end">{{$t('departure_day')}}:
+                                <div class="col-md-7 col-sm-6 text-end">{{ $t('departure_day') }}:
                                 </div>
                                 <div class="col-md-5 col-sm-6 text-start">{{ convertDate(tour.start_date) }}</div>
                               </div>
@@ -103,7 +101,7 @@
             </el-col>
           </el-row>
           <el-row class="chat-box">
-            <div class="icon-chat-box" v-if="showChat">
+            <div v-if="showChat" class="icon-chat-box">
               <div class="thumb" @click="clickChatBot">
                 <el-image :src="chat" style="width: 50px;; height: 50px;" />
               </div>
