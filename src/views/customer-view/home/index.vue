@@ -214,18 +214,6 @@ export default {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
-
-.vac-message-actions-wrapper{
-  display: none !important;
-}
-.vac-message-actions-wrapper .vac-options-container{
-  display: none !important;
-}
-.vac-svg-button vac-message-options{
-  display: none !important;
-}
-
-
 </style>
 <style scoped>
 .app-contain{
