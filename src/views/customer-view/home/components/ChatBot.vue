@@ -73,7 +73,7 @@ export default {
         {
           _id: this.messages.length,
           content: data.content,
-          senderId: '' + data.sender_id,
+          senderId: '' + data.type === 0 ? 0 : data.sender_id,
           type: data.type,
           timestamp: convertDateTime(data.created_at),
           date: convertDate(data.created_at)
@@ -88,7 +88,7 @@ export default {
         this.messages = res?.data?.list.map(v => ({
           ...v,
           _id: v.id,
-          senderId: '' + v.sender_id,
+          senderId: '' + v.type === 0 ? 0 : v.sender_id,
           timestamp: convertDateTime(v.created_at),
           date: convertDate(v.created_at)
         }))
