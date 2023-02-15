@@ -102,6 +102,14 @@
               </div>
             </el-col>
           </el-row>
+          <el-row class="chat-box">
+            <div class="icon-chat-box">
+              <div class="thumb" @click="clickChatBot">
+                <el-image :src="chat" style="width: 50px;; height: 50px;" />
+              </div>
+            </div>
+            <chat-bot :show-dialog="onShowDialog" :object-data="objectChat" @onClickButtonDialog="handleClickButtonDialog" />
+          </el-row>
         </div>
       </el-col>
     </el-row>
@@ -110,6 +118,8 @@
 
 <script>
 require('@/assets/css/home.css')
+import chat from '@/assets/images/chatbox.png'
+import ChatBot from '@/views/customer-view/home/components/ChatBot'
 import { formatNumber, convertDate } from '@/utils/convert'
 import { Carousel, Slide } from 'vue-carousel'
 import BASE_URL from '@/constant/domain'
@@ -118,14 +128,17 @@ const listTourResource = new ListTourResource()
 
 export default {
   name: 'Index',
-  components: { Carousel, Slide },
+  components: { Carousel, Slide, ChatBot },
   data() {
     return {
       url: BASE_URL,
       tour_hot: [],
       tours: [],
       loadingTable: false,
-      loadingHot: false
+      loadingHot: false,
+      chat: chat,
+      onShowDialog: false,
+      objectChat: {}
     }
   },
   created() {
@@ -133,6 +146,17 @@ export default {
     this.requestHotTour()
   },
   methods: {
+    clickChatBot() {
+      this.onShowDialog = true
+      this.objectChat = {}
+    },
+    handleClickButtonDialog(object) {
+      const { dialog, reload } = object
+      this.onShowDialog = dialog
+      if (reload) {
+        this.requestListTour()
+      }
+    },
     requestHotTour() {
       this.loadingHot = true
       listTourResource.hotTour().then(res => {
@@ -190,6 +214,18 @@ export default {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
+
+.vac-message-actions-wrapper{
+  display: none !important;
+}
+.vac-message-actions-wrapper .vac-options-container{
+  display: none !important;
+}
+.vac-svg-button vac-message-options{
+  display: none !important;
+}
+
+
 </style>
 <style scoped>
 .app-contain{
@@ -226,5 +262,15 @@ export default {
 
 .el-image{
   display: block;
+}
+.icon-chat-box{
+  overflow: hidden;
+  position: fixed;
+  right: 5px;
+  text-align: center;
+  top: calc(70% + 10px)!important;
+  transform: translateY(-50%);
+  width: 50px;
+  z-index: 9999;
 }
 </style>
