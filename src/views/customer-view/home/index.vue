@@ -13,6 +13,49 @@
                   :mouse-drag="false"
                   :autoplay="true"
                   :navigation-enabled="true"
+                  class="desktop"
+                >
+                  <slide v-for="hot in tour_hot" :key="hot.id" class="tour-list">
+                    <!-- <el-card :body-style="{ padding: '0px', backgroundImage: `url('${url + hot.images}')`, width:'100%', height: '470px', backgroundSize: 'cover', backgroundPosition: 'bottom' }" class="card-tour"> -->
+                    <div>
+                      <div class="landing--tour-data-single landing--tour-data">
+                        <div class="landing--tour-item">
+                          <div class="overlay  available">
+                            <el-image :src="url + hot.images" fit="cover" />
+                          </div>
+                          <div class="item-tour text landing--tour-item_content">
+                            <h3 class="name-tour">{{ hot.name }}</h3>
+                            <div class="time row">
+                              <div class="col-md-7 col-sm-6 text-end">{{ $t('time') }}: </div>
+                              <div class="col-md-5 col-sm-6 text-start text-lowercase">{{ hot.time }}</div>
+                            </div>
+                            <div class="departure-date row">
+                              <div class="col-md-7 col-sm-6 text-end">Ngày khởi hành:
+                              </div>
+                              <div class="col-md-5 col-sm-6 text-start">{{ convertDate(hot.start_date) }}</div>
+                            </div>
+                            <div class="price row">
+                              <div class="col-md-7 col-sm-6 text-end">Giá Tour:</div>
+                              <div class="col-md-5 col-sm-6 text-start">{{ `${formatNumber(hot.price)} ${hot.currency}` }}</div>
+                            </div>
+                            <div class="detail text-center">
+                              <router-link class="home-link" :to="`/detail?id=${hot.id}`">
+                                <span class="detail-tour text-capitalize">{{ $t('detail') }}</span>
+                              </router-link>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </slide>
+                </carousel>
+                <carousel
+                  :per-page="2"
+                  :pagination-enabled="false"
+                  :mouse-drag="false"
+                  :autoplay="true"
+                  :navigation-enabled="true"
+                  class="mobile"
                 >
                   <slide v-for="hot in tour_hot" :key="hot.id" class="tour-list">
                     <!-- <el-card :body-style="{ padding: '0px', backgroundImage: `url('${url + hot.images}')`, width:'100%', height: '470px', backgroundSize: 'cover', backgroundPosition: 'bottom' }" class="card-tour"> -->
@@ -276,5 +319,19 @@ export default {
   width: 50px;
   z-index: 9999;
   cursor: pointer;
+}
+@media (max-width: 900px) {
+  .tour-list{
+    width: 33%;
+    height: 321px;
+  }
+  .landing--tour-data .landing--tour-item {
+    height: 321px;
+  }
+}
+@media (max-width: 500px) {
+  .tour-list{
+    width: 50%;
+  }
 }
 </style>
