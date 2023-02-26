@@ -85,7 +85,14 @@ export default {
   }
 }
 </script>
-
+<style>
+.el-tabs__item.is-active, .el-tabs__item:hover, .el-breadcrumb__inner.is-link:hover, .el-breadcrumb__inner a:hover{
+  color: #c3a30b;
+}
+.el-tabs__active-bar{
+  background-color: #c3a30b
+}
+</style>
 <style scoped>
 .history-container{
   margin-top: 109px;

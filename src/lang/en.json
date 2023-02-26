@@ -582,5 +582,7 @@
   "dont_accept_guests": "Don't accept guests",
   "departure_day": "Departure day",
   "people_amount": "Amount of people",
-  "submit_tour": "Submit registration"
+  "submit_tour": "Submit registration",
+  "people": "people",
+  "into_money": "Into money"
 }

@@ -592,5 +592,7 @@
   "departure_day": "Ngày khởi hành",
   "people_amount": "Số người",
   "submit_tour": "Gửi đăng ký",
-  "cancel_tour": "Hủy tour"
+  "cancel_tour": "Hủy tour",
+  "people": "người",
+  "into_money": "Thành tiền"
 }

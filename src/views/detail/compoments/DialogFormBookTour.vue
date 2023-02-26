@@ -79,7 +79,7 @@ export default {
       this.loadingSubmit = true
       this.body.user_id = account.id
       this.body.tour_id = this.objectData.id
-      this.body.price = this.objectData.price
+      this.body.price = this.objectData.price * this.body.guest_number
       listTourResource.storeBookTour(this.body).then(res => {
         this.loadingSubmit = false
         const { error_code, error_msg } = res

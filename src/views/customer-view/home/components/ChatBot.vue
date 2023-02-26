@@ -1,6 +1,9 @@
 <template>
   <el-card :body-style="{ padding: '0px' }">
     <div v-if="showDialog" class="chatbot">
+      <div class="close-chat">
+        <i class="el-icon-close" @click="onGoBack" />
+      </div>
       <vue-advanced-chat
         height="calc(50vh - 20px)"
         :current-user-id="user.id"
@@ -47,6 +50,12 @@ export default {
       default() {
         return {}
       }
+    },
+    goBack: {
+      type: Function,
+      default() {
+        return null
+      }
     }
   },
   data() {
@@ -82,6 +91,11 @@ export default {
     })
   },
   methods: {
+    onGoBack() {
+      if (this.goBack) {
+        this.goBack()
+      }
+    },
     fetchMessages() {
       messageResource.list_message({ room: this.user?.id }).then((res) => {
         console.log(res?.data?.list)
@@ -104,6 +118,13 @@ export default {
 </script>
 
 <style>
+.close-chat{
+  position: absolute;
+  z-index: 9999;
+  right: 7px;
+  top: 5px;
+  cursor: pointer;
+}
 .chatbot{
   overflow: hidden;
   position: fixed;

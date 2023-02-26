@@ -61,7 +61,7 @@
               <el-row v-if="showComment" class="comment-tour">
                 <el-col :span="13" class="list-comment">
                   <div class="grid-content bg-purple">
-                    <div class="feedback">
+                    <!-- <div class="feedback">
                       <div class="thumb">
                         <el-image :src="default_user" style="width: 30px; height: 30px; border-radius: 50%;" />
                       </div>
@@ -75,7 +75,8 @@
                           <el-button :loading="loadingSubmit" type="primary" @click="onSubmit">{{ $t('comment') }}</el-button>
                         </el-form-item>
                       </el-form>
-                    </div>
+                    </div> -->
+                    <h3>{{ $t('comment') }}</h3>
                     <div v-loading="loadingCommnet" v-for="comment in commets" :key="comment.id" class="comment-col">
                       <div class="thumb">
                         <el-image :src="default_user" style="width: 30px; height: 30px;" />
@@ -377,7 +378,6 @@ export default {
   display: flex;
   padding-bottom: 5px;
   margin-bottom: 5px;
-  border-bottom: 1px solid #eee;
 }
 .comment-col:last-child{
   border-bottom: none;
@@ -459,5 +459,8 @@ position: relative;
 }
 .VueCarousel-slide{
   width: 100%;
+}
+.itinerary-detail{
+  margin-bottom: 20px;
 }
 </style>

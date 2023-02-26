@@ -106,7 +106,7 @@
                 <el-image :src="chat" style="width: 50px;; height: 50px;" />
               </div>
             </div>
-            <chat-bot :show-dialog="onShowDialog" :object-data="objectChat" @onClickButtonDialog="handleClickButtonDialog" />
+            <chat-bot :show-dialog="onShowDialog" :go-back="goBack" :object-data="objectChat" @onClickButtonDialog="handleClickButtonDialog" />
           </el-row>
         </div>
       </el-col>
@@ -148,6 +148,11 @@ export default {
     this.showMessageer()
   },
   methods: {
+    goBack() {
+      this.onShowDialog = false
+      this.requestListTour()
+      this.requestHotTour()
+    },
     showMessageer() {
       const token = getToken()
       if (token) {
@@ -270,5 +275,6 @@ export default {
   transform: translateY(-50%);
   width: 50px;
   z-index: 9999;
+  cursor: pointer;
 }
 </style>
