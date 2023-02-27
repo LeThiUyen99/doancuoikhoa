@@ -51,12 +51,13 @@
         <div class="grid-content bg-purple-dark vote-tour">
           <p class="into-money">
             <span>{{ `${$t('into_money')}: ` }}</span>
-            <span>{{ list.price }} VND</span>
+            <span>{{ formatNumber(list.price) }} VND</span>
           </p>
-          <el-button class="vote">{{ $t('vote') }}</el-button>
+          <el-button class="vote" @click="handleVote(list)">{{ $t('vote') }}</el-button>
         </div>
       </el-col>
     </el-card>
+    <dialog-vote-tour :show-dialog="onShowDialog" :object-data="obj_data" @onClickButtonDialog="handleClickButtonDialog" />
   </el-row>
 </template>
 
@@ -64,8 +65,10 @@
 import BASE_URL from '@/constant/domain'
 import { formatNumber, convertDate } from '@/utils/convert'
 import { setStateToStringDelivery } from '@/utils/delivery/convertDelivery'
+import DialogVoteTour from '@/views/history/compoments/DialogVoteTour'
 export default {
   name: 'HistoryTour',
+  components: { DialogVoteTour },
   props: {
     tableData: {
       type: Array,
@@ -86,10 +89,50 @@ export default {
   },
   data() {
     return {
-      url: BASE_URL
+      url: BASE_URL,
+      onShowDialog: false,
+      obj_data: {},
+      showVote: false
     }
   },
+  // watch: {
+  //   tableData(data) {
+  //     console.log(data, 'data')
+  //     for (const d of data) {
+  //       if (d.active_comment === 1) {
+  //         this.showVote = false
+  //         console.log('-------', d.active_comment)
+  //       } else {
+  //         this.showVote = true
+  //       }
+  //     }
+  //   }
+  // },
+  // created() {
+  //   this.showIconComment()
+  // },
   methods: {
+    // showIconComment() {
+    //   for (const data of this.tableData) {
+    //     console.log(data, '--------------------------')
+    //     if (data.active_comment === 0) {
+    //       this.showVote = true
+    //       console.log('------')
+    //     } else {
+    //       this.showVote = false
+    //       console.log('vao dat')
+    //     }
+    //   }
+    // },
+    handleVote(data) {
+      this.onShowDialog = true
+      this.obj_data = data
+    },
+    handleClickButtonDialog(object) {
+      const { dialog, reload, data_active } = object
+      this.onShowDialog = dialog
+      console.log(data_active, 'data_active')
+    },
     setStateToStringDelivery,
     formatNumber,
     convertDate

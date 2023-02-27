@@ -80,6 +80,13 @@ class ListTourResource extends Resource {
       params: query
     })
   }
+  updateActiveComment(resource) {
+    return request({
+      url: `/comment/update_active?${this.getVerify()}`,
+      method: 'post',
+      data: resource
+    })
+  }
 }
 
 export { ListTourResource as default }

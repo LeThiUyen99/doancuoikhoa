@@ -32,7 +32,7 @@
   </nav>
 </template>
 <script>
-import { getUID, removeAcountInfo, removeToken, removeUID } from '@/utils/auth'
+import { getToken, getUID, removeAcountInfo, removeToken, removeUID } from '@/utils/auth'
 import ListTourResource from '@/api/list-tour'
 const listTourResource = new ListTourResource()
 export default {
@@ -54,7 +54,6 @@ export default {
       removeToken()
       removeUID()
       removeAcountInfo()
-      this.showUser = true
       location.reload()
     },
     clickTour(id) {
@@ -68,7 +67,7 @@ export default {
       }
     },
     showUserIcon() {
-      if (getUID()) {
+      if (getUID() || getToken()) {
         this.showUser = false
       } else {
         this.showUser = true
