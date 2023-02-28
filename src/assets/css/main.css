@@ -52,7 +52,7 @@ a{text-decoration:none!important}
 }
 .img-fluid{-o-object-fit:cover;object-fit:cover;width:100%}
 .detail-blog-content{padding:10px 10px 10px 20px}
-.btn-detail{background-color:#c3a30b!important;color:#fff!important;font-size:1em}
+.btn-detail{color:#fff!important;font-size:1em}
 .detail-blog-content .title-blog{color:#000;font-size:1.429em;font-weight:600;line-height:1.4;margin-bottom:0!important;margin-top:8px;width:100%}
 .detail-blog-content .date-blog{padding-bottom:20px;padding-top:20px}
 .view-more-tour{border:2px dotted #c3a30b;margin-top:15px;padding:5px}

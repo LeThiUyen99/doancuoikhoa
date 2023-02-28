@@ -53,7 +53,9 @@
             <span>{{ `${$t('into_money')}: ` }}</span>
             <span>{{ formatNumber(list.price) }} VND</span>
           </p>
-          <el-button class="vote" @click="handleVote(list)">{{ $t('vote') }}</el-button>
+          <div v-if="list.active === 1">
+            <el-button v-if="list.active_comment === 0" class="vote" @click="handleVote(list)">{{ $t('vote') }}</el-button>
+          </div>
         </div>
       </el-col>
     </el-card>
@@ -95,43 +97,14 @@ export default {
       showVote: false
     }
   },
-  // watch: {
-  //   tableData(data) {
-  //     console.log(data, 'data')
-  //     for (const d of data) {
-  //       if (d.active_comment === 1) {
-  //         this.showVote = false
-  //         console.log('-------', d.active_comment)
-  //       } else {
-  //         this.showVote = true
-  //       }
-  //     }
-  //   }
-  // },
-  // created() {
-  //   this.showIconComment()
-  // },
   methods: {
-    // showIconComment() {
-    //   for (const data of this.tableData) {
-    //     console.log(data, '--------------------------')
-    //     if (data.active_comment === 0) {
-    //       this.showVote = true
-    //       console.log('------')
-    //     } else {
-    //       this.showVote = false
-    //       console.log('vao dat')
-    //     }
-    //   }
-    // },
     handleVote(data) {
       this.onShowDialog = true
       this.obj_data = data
     },
     handleClickButtonDialog(object) {
-      const { dialog, reload, data_active } = object
+      const { dialog, reload } = object
       this.onShowDialog = dialog
-      console.log(data_active, 'data_active')
     },
     setStateToStringDelivery,
     formatNumber,
