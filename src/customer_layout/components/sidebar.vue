@@ -7,8 +7,8 @@
             <el-form class="form-search">
               <div class="search-top">
                 <el-input v-model="q" :placeholder="$t('search')" />
-                <el-date-picker v-model="startDate" type="date" :placeholder="$t('start_date')" style="width:100%; margin: 0 10px" />
-                <el-date-picker v-model="expireDate" type="date" :placeholder="$t('date_finish')" style="width:100%" />
+                <el-date-picker v-model="startDate" type="date" :placeholder="$t('start_date')" class="search-input" style="width:100%; margin: 0 10px" />
+                <el-date-picker v-model="expireDate" type="date" :placeholder="$t('date_finish')" class="search-input" style="width:100%" />
                 <el-button type="primary" icon="el-icon-search" class="btn-search" @click="searchTour">Search</el-button>
               </div>
               <div v-if="seen" id="hide" class="search-bottom">
@@ -157,5 +157,16 @@ export default {
     width:100%;
     background: #c3a30b;
     border: 1px solid #c3a30b;
+  }
+  @media (max-width: 1024px) {
+    .search-input{
+      display: none;
+    }
+    .control{
+      display: none;
+    }
+    .form-search .btn-search{
+      width: auto;
+    }
   }
 </style>

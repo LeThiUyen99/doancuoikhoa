@@ -272,6 +272,12 @@ export default {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
+.vac-col-messages{
+  border: 1px solid #aaa;
+}
+.VueCarousel-inner{
+  flex-basis: 332.4px !important
+}
 </style>
 <style scoped>
 .app-contain{

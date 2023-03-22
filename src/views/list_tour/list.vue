@@ -134,4 +134,14 @@ a, h3{
 .app-contain{
   margin-top: 50px;
 }
+@media (max-width: 1024px) {
+  .tour-list{
+    width: 50%;
+  }
+}
+@media (max-width: 768px) {
+  .VueCarousel-inner{
+    width: 50%;
+  }
+}
 </style>

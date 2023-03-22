@@ -77,7 +77,7 @@
                       </el-form>
                     </div> -->
                     <h3>{{ $t('comment') }}</h3>
-                    <div v-loading="loadingCommnet" v-for="comment in commets" :key="comment.id" class="comment-col">
+                    <div v-for="comment in commets" :key="comment.id" v-loading="loadingCommnet" class="comment-col">
                       <div class="thumb">
                         <el-image :src="default_user" style="width: 30px; height: 30px;" />
                       </div>
@@ -462,5 +462,14 @@ position: relative;
 }
 .itinerary-detail{
   margin-bottom: 20px;
+}
+@media (max-width: 1024px) {
+  .form-comment{
+    padding: 0;
+    width: 100%;
+  }
+  .VueCarousel-inner{
+    width: 50%;
+  }
 }
 </style>

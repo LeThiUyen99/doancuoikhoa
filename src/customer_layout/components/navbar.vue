@@ -1,47 +1,53 @@
 <template>
-  <nav id="ftco-navbar" class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light">
-    <div class="container">
-      <router-link class="navbar-brand" to="/">Pacific<span>Travel Agency</span></router-link>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="oi oi-menu" /> Menu
-      </button>
+  <div>
+    <nav id="ftco-navbar" class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light">
+      <div class="container">
+        <router-link class="navbar-brand" to="/">Pacific<span>Travel Agency</span></router-link>
+        <el-button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation" @click="openNavBar">
+          <span class="oi oi-menu" /> Menu
+        </el-button>
 
-      <div id="ftco-nav" class="collapse navbar-collapse">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <el-dropdown>
-              <span class="el-dropdown-link">Tour nước ngoài</span>
-              <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item v-for="cate in categories" :key="cate.id" :value="cate.id">
-                  <div class="nav-link" @click="clickTour(cate.id)">{{ cate.name }}</div>
-                </el-dropdown-item>
-              </el-dropdown-menu>
-            </el-dropdown>
-          </li>
-          <li class="nav-item"><div class="nav-link" @click="clickTour(cate_id)">Tour trong nước</div></li>
-          <!-- <li class="nav-item"><router-link to="/book-tour" class="nav-link">Book tour</router-link></li> -->
-          <li class="nav-item"><router-link to="/about" class="nav-link">About</router-link></li>
-          <li class="nav-item"><router-link to="/blog" class="nav-link">Blog</router-link></li>
-          <li class="nav-item"><router-link to="/contact" class="nav-link">Contact</router-link></li>
-          <li class="nav-item"><router-link to="/history" class="nav-link">History</router-link></li>
-          <li v-if="showUser" class="nav-item"><router-link to="/login" class="nav-link">login</router-link></li>
-          <li v-if="!showUser" class="nav-item"><div class="nav-link" @click="onLogout">logout</div></li>
-        </ul>
+        <div id="ftco-nav" class="collapse navbar-collapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <el-dropdown>
+                <span class="el-dropdown-link">Tour nước ngoài</span>
+                <el-dropdown-menu slot="dropdown">
+                  <el-dropdown-item v-for="cate in categories" :key="cate.id" :value="cate.id">
+                    <div class="nav-link" @click="clickTour(cate.id)">{{ cate.name }}</div>
+                  </el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
+            </li>
+            <li class="nav-item"><div class="nav-link" @click="clickTour(cate_id)">Tour trong nước</div></li>
+            <!-- <li class="nav-item"><router-link to="/book-tour" class="nav-link">Book tour</router-link></li> -->
+            <li class="nav-item"><router-link to="/about" class="nav-link">About</router-link></li>
+            <li class="nav-item"><router-link to="/blog" class="nav-link">Blog</router-link></li>
+            <li class="nav-item"><router-link to="/contact" class="nav-link">Contact</router-link></li>
+            <li class="nav-item"><router-link to="/history" class="nav-link">History</router-link></li>
+            <li v-if="showUser" class="nav-item"><router-link to="/login" class="nav-link">login</router-link></li>
+            <li v-if="!showUser" class="nav-item"><div class="nav-link" @click="onLogout">logout</div></li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+    <navmenumb-vue :show-dialog="onShowDialog" @onClickButtonDialog="handleClickButtonDialog" />
+  </div>
 </template>
 <script>
 import { getToken, getUID, removeAcountInfo, removeToken, removeUID } from '@/utils/auth'
 import ListTourResource from '@/api/list-tour'
+import navmenumbVue from './navmenumb.vue'
 const listTourResource = new ListTourResource()
 export default {
   name: 'Navbar',
+  components: { navmenumbVue },
   data() {
     return {
       showUser: true,
       categories: [],
-      cate_id: 0
+      cate_id: 0,
+      onShowDialog: false
     }
   },
   created() {
@@ -50,6 +56,13 @@ export default {
     this.requestCategoryListVN()
   },
   methods: {
+    openNavBar() {
+      this.onShowDialog = true
+    },
+    handleClickButtonDialog(object) {
+      const { dialog } = object
+      this.onShowDialog = dialog
+    },
     onLogout() {
       removeToken()
       removeUID()
