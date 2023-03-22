@@ -5,10 +5,10 @@
         <section class="css-1utvz5n">
           <section class="css-wmt5k7">
             <div class="css-1w5npbh">
-              <span class="text css-13sacn9">GIỚI THIỆU VỀ VGS TRAVEL</span>
+              <span class="text css-13sacn9">GIỚI THIỆU VỀ PACIFIC TRAVEL AGENCY</span>
               <div class="about-border" />
               <span class="text css-sau84p">
-                <b>Công ty Cổ phần Dịch vụ Du lịch Golf Việt Nam (VGS Travel)</b> là thành viên trực thuộc <b>VGS Group</b> - hệ thống sở hữu <b>vHandicap </b> (Nền tảng quản lý chơi golf lớn nhất Việt Nam và đồng thời là hệ thống tính điểm chấp duy nhất tại Việt Nam được USGA cấp phép sử dụng)..
+                <b>Công ty Cổ phần Dịch vụ Du lịch Golf Việt Nam (Pacific Travel Agency)</b> là thành viên trực thuộc <b>VGS Group</b> - hệ thống sở hữu <b>vHandicap </b> (Nền tảng quản lý chơi golf lớn nhất Việt Nam và đồng thời là hệ thống tính điểm chấp duy nhất tại Việt Nam được USGA cấp phép sử dụng)..
               </span>
               <div class="text css-sau84p">
                 <ul>
@@ -61,14 +61,14 @@
                 <div class="col-md-6 col-sm-12 col-xs-12 slick-css">
                   <div class="slick-carousel-slider">
                     <el-carousel indicator-position="none">
-                      <el-carousel-item v-for="item in images" :key="item" >
+                      <el-carousel-item v-for="item in images" :key="item">
                         <div class="item">
                           <img
-                          :src="item.thumb"
-                          alt="Owl Image"
-                          data-class="eqh"
-                          class="w-100 img-slick-css"
-                        >
+                            :src="item.thumb"
+                            alt="Owl Image"
+                            data-class="eqh"
+                            class="w-100 img-slick-css"
+                          >
                         </div>
                       </el-carousel-item>
                     </el-carousel>
