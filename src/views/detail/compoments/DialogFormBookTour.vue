@@ -12,7 +12,7 @@
       </el-form-item>
       <el-form-item :label="$t('start_date')">
         <!-- <el-input v-model="body.start_date" :placeholder="$t('start_date')" /> -->
-        <el-date-picker v-model="body.start_date" type="date" :placeholder="$t('start_date')" style="width:100%" :picker-options="datePickerOptions" />
+        <el-date-picker v-model="objectData.start_date" disabled type="date" :placeholder="$t('start_date')" style="width:100%" :picker-options="datePickerOptions" />
       </el-form-item>
       <el-form-item :label="$t('people_amount')">
         <el-input v-model="body.guest_number" :placeholder="$t('people_amount')" />
@@ -79,6 +79,7 @@ export default {
       this.loadingSubmit = true
       this.body.user_id = account.id
       this.body.tour_id = this.objectData.id
+      this.body.start_date = this.objectData.start_date
       this.body.price = this.objectData.price * this.body.guest_number
       listTourResource.storeBookTour(this.body).then(res => {
         this.loadingSubmit = false

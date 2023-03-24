@@ -12,14 +12,14 @@
               </span>
               <div class="text css-sau84p">
                 <ul>
-                  <li>VGS Travel là đơn vị tiên phong xây dựng hệ sinh thái hoàn thiện – tự động cho dịch vụ du lịch golf, đồng thời kiến tạo và điều hành các tour du lịch golf trong nước và quốc tế đạt chuẩn 5* đầu tiên tại Việt Nam.</li>
-                  <li> Bằng việc cung cấp hàng loạt sản phẩm và tiện ích từ vé máy bay, phòng nghỉ, voucher golf nghỉ dưỡng, dịch vụ du thuyền và xe đưa đón cao cấp,... VGS Travel đang đem tới các khách hàng trải nghiệm du lịch golf chủ động, an toàn và tiện nghi nhất.</li>
+                  <li>Pacific Travel Agency là đơn vị tiên phong xây dựng hệ sinh thái hoàn thiện – tự động cho dịch vụ du lịch golf, đồng thời kiến tạo và điều hành các tour du lịch golf trong nước và quốc tế đạt chuẩn 5* đầu tiên tại Việt Nam.</li>
+                  <li> Bằng việc cung cấp hàng loạt sản phẩm và tiện ích từ vé máy bay, phòng nghỉ, voucher golf nghỉ dưỡng, dịch vụ du thuyền và xe đưa đón cao cấp,... Pacific Travel Agency đang đem tới các khách hàng trải nghiệm du lịch golf chủ động, an toàn và tiện nghi nhất.</li>
                 </ul>
               </div>
               <span class="text css-sau84p ">
-                Bên cạnh những sản phẩm du lịch golf và tiện ích đáng tin cậy, VGS Travel sở hữu đội ngũ nhân viên được đào tạo từ bài bản đến chuyên nghiệp, đảm bảo sẵn sàng hỗ trợ 24/7, đáp ứng nhu cầu và đem đến sự hài lòng cho khách hàng.
+                Bên cạnh những sản phẩm du lịch golf và tiện ích đáng tin cậy, Pacific Travel Agency sở hữu đội ngũ nhân viên được đào tạo từ bài bản đến chuyên nghiệp, đảm bảo sẵn sàng hỗ trợ 24/7, đáp ứng nhu cầu và đem đến sự hài lòng cho khách hàng.
               </span>
-              <span class="text-center text css-sau84p "><em>Xem thêm Profile đầy đủ của VGS Travel </em><a
+              <span class="text-center text css-sau84p "><em>Xem thêm Profile đầy đủ của Pacific Travel Agency </em><a
                 href="https://drive.google.com/file/d/1OvN9jp0kchrdd-htnw7QgB-3LeCAaVwf/view"
                 target="_blank"
               ><em>tại đây.</em>.</a>
@@ -37,7 +37,7 @@
                   <div>
                     <span class="title">Tầm nhìn</span>
                   </div>
-                  <section class="content">Dù thành lập và phát triển trong giai đoạn ngành du lịch gặp rất nhiều khó khăn do ảnh hưởng của đại dịchCovid-19, VGS Travel vẫn khôngngừng đổi mới, sáng tạo để trở thành đơn vị tổ chức Tour golf quốctế số 1 Việt Nam, góp phần nângtầm vị thế của ngành du lịch golf tại Việt Nam.</section>
+                  <section class="content">Dù thành lập và phát triển trong giai đoạn ngành du lịch gặp rất nhiều khó khăn do ảnh hưởng của đại dịchCovid-19, Pacific Travel Agency vẫn khôngngừng đổi mới, sáng tạo để trở thành đơn vị tổ chức Tour golf quốctế số 1 Việt Nam, góp phần nângtầm vị thế của ngành du lịch golf tại Việt Nam.</section>
                 </section>
                 <section class="col-md-6 col-xs-12 text-center text-vision">
                   <section class="icon">
@@ -46,7 +46,7 @@
                   <div>
                     <span class="title">Sứ mệnh</span>
                   </div>
-                  <section class="content">VGS Travel cam kết mang đến cho cộng đồng golfer Việt những trải nghiệm đẳng cấp, ấn tượng và độc đáo tại nước ngoài; đồng thời thông qua các tour du lịch golf xuyên Việt để thu hút, quảng bá du lịch golf Việt Nam tới bạn bè quốc tế. Với sứ mệnh này, VGS Travel đã và đang kiến tạo những sản phẩm du lịch độc đáo cùng dịch vụ đỉnh cao cả trong nước và nước ngoài.</section>
+                  <section class="content">Pacific Travel Agency cam kết mang đến cho cộng đồng golfer Việt những trải nghiệm đẳng cấp, ấn tượng và độc đáo tại nước ngoài; đồng thời thông qua các tour du lịch golf xuyên Việt để thu hút, quảng bá du lịch golf Việt Nam tới bạn bè quốc tế. Với sứ mệnh này, Pacific Travel Agency đã và đang kiến tạo những sản phẩm du lịch độc đáo cùng dịch vụ đỉnh cao cả trong nước và nước ngoài.</section>
                 </section>
               </section>
             </section>
@@ -79,7 +79,7 @@
                     <div class="text-center">
                       <span class="text text-story-header">Câu chuyện về nguồn cảm hứng</span>
                     </div>
-                    <span class="text-story-span">Câu chuyện của VGS Travel bắt đầu với nguồn cảm hứng của những người lãnh đạo - những con người yêu golf và đam mê trải nghiệm, khám phá, xê dịch. Niềm đam mê đã dẫn dắt họ đi khắp nơi, trải nghiệm những sân golf khác nhau trên thế giới để chinh phục những thách thức khác nhau. Cũng có người từng trực tiếp điều hành những tour golf sang Châu Âu, dày dặn kinh nghiệm đồng hành cùng golfer trong mỗi chuyến đi tour. Họ đều là những con người từng tự mình trải nghiệm, qua đó hiểu được nhu cầu về trải nghiệm và cảm xúc của khách hàng và hơn hết là thấu hiểu những bối rối mà khách hàng có thể gặp phải trong các chuyến đi. Với nỗi trăn trở đó, những con người này cùng nhau tựu lại, tạo nên VGS Travel - nơi các golfer có thể tìm thấy những tour golf thăng hoa và ấn tượng nhất, đồng thời hỗ trợ họ trong mỗi chuyến đi, loại bỏ tối đa những vấn đề trong quá trình trải nghiệm của họ. Tại VGS Travel, ưu tiên hàng đầu chính là đảm bảo khách hàng có những chuyến du lịch golf an toàn và tràn đầy hứng khởi.</span>
+                    <span class="text-story-span">Câu chuyện của Pacific Travel Agency bắt đầu với nguồn cảm hứng của những người lãnh đạo - những con người yêu golf và đam mê trải nghiệm, khám phá, xê dịch. Niềm đam mê đã dẫn dắt họ đi khắp nơi, trải nghiệm những sân golf khác nhau trên thế giới để chinh phục những thách thức khác nhau. Cũng có người từng trực tiếp điều hành những tour golf sang Châu Âu, dày dặn kinh nghiệm đồng hành cùng golfer trong mỗi chuyến đi tour. Họ đều là những con người từng tự mình trải nghiệm, qua đó hiểu được nhu cầu về trải nghiệm và cảm xúc của khách hàng và hơn hết là thấu hiểu những bối rối mà khách hàng có thể gặp phải trong các chuyến đi. Với nỗi trăn trở đó, những con người này cùng nhau tựu lại, tạo nên Pacific Travel Agency - nơi các golfer có thể tìm thấy những tour golf thăng hoa và ấn tượng nhất, đồng thời hỗ trợ họ trong mỗi chuyến đi, loại bỏ tối đa những vấn đề trong quá trình trải nghiệm của họ. Tại Pacific Travel Agency, ưu tiên hàng đầu chính là đảm bảo khách hàng có những chuyến du lịch golf an toàn và tràn đầy hứng khởi.</span>
                   </div>
                 </div>
               </div>
