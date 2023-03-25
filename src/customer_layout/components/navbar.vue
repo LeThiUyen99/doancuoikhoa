@@ -23,7 +23,7 @@
             <!-- <li class="nav-item"><router-link to="/book-tour" class="nav-link">Book tour</router-link></li> -->
             <li class="nav-item"><router-link to="/about" class="nav-link">About</router-link></li>
             <li class="nav-item"><router-link to="/blog" class="nav-link">Blog</router-link></li>
-            <li class="nav-item"><router-link to="/contact" class="nav-link">Contact</router-link></li>
+            <!-- <li class="nav-item"><router-link to="/contact" class="nav-link">Contact</router-link></li> -->
             <li class="nav-item"><router-link to="/history" class="nav-link">History</router-link></li>
             <li v-if="showUser" class="nav-item"><router-link to="/login" class="nav-link">login</router-link></li>
             <li v-if="!showUser" class="nav-item"><div class="nav-link" @click="onLogout">logout</div></li>
